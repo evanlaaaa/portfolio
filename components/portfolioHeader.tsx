@@ -2,7 +2,7 @@ import { Box, Center, Heading, Link, SlideFade, Text } from "@chakra-ui/react"
 
 export const PortfolioHeader = () => {
   return (
-    <Box w='full' h='100vh' bgImage="url('/test.jpg')" bgSize='cover'>
+    <Box w='full' h='100vh' bgImage="url('/portfolio/test.jpg')" bgSize='cover'>
       <Center>
         <Box w='container.lg'>
           <Box my='250px' w={["100%", "md", "container.md"]} bg='blackAlpha.500' p='10' borderRadius='md'>

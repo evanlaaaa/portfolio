@@ -71,7 +71,7 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
                           <Image 
                             key={index}
                             alt={url}
-                            src={url} 
+                            src={'/portfolio' + url} 
                             objectFit='cover'
                             boxSize='50px'
                           />
