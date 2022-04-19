@@ -2,7 +2,7 @@ import { NavBar } from "./navBar";
 import { useRouter } from 'next/router';
 
 
-const index = ({children} : {children: any}) => {
+const Index = ({children} : {children: any}) => {
   const router = useRouter();
   let { asPath } = router;
 
@@ -14,4 +14,4 @@ const index = ({children} : {children: any}) => {
   );
 }
 
-export default index;
+export default Index;

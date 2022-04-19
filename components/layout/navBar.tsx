@@ -45,7 +45,7 @@ export const NavBar = () => {
     }
   ]
 
-  const scroll = () => {
+  const scroll = useCallback(() => {
     setIsTop(window.scrollY == 0);
     setIsUp(window.scrollY > y ? false : true);
 
@@ -57,7 +57,7 @@ export const NavBar = () => {
 
     y = window.scrollY;
     console.log(y);
-  }
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", scroll);

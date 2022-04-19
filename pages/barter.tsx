@@ -1,7 +1,7 @@
 import { Box, Center, Container, Flex, Heading, HStack, Input, Text, Image, Checkbox, VStack, Button } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from 'next/head'
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { TextBox } from "../components/input";
 
 const Barter: NextPage = () => {
@@ -27,32 +27,6 @@ const Barter: NextPage = () => {
     setT4Restock(Number(localStorage.getItem('t4stockt')) ?? 0);
     setT4Stock(JSON.parse(localStorage.getItem('stock') ?? JSON.stringify(Array(14).fill(0))));
   }, [])
-
-  const calculate = () : void => {
-    var counts = 0;
-    var t4rcount = 0;
-
-    for (var i = 0; i < t4Check.length; i++) {
-      if(t4Check[i]) {
-        counts++;
-        if(t4Stock[i] - 4 < t4restock) {
-          t4rcount++;
-        }
-      }
-    }
-
-    let total = 1000000
-    // hakoven route
-    - (hakovenTrade >= hakovenThreshold ? (43780-(43780*parley/100))+((29430-(29430*parley/100))*2)+(36420-(36420*parley/100)) : 0) 
-    // margo route
-    - (1250 * margoThreshold / 100 <= margoTrade ? ((46544-(46544*parley/100))*3)+((58180-(58180*parley/100))*4) : 0)
-    // t5 trade (4 trade from each point)
-    - (counts * (14286-(14286*parley/100)) * 4)
-    // t4 restock if stock level fall below threshold after t5 trade
-    - (t4rcount * (14286-(14286*parley/100)) * 6);
-
-    setTotal(total);
-  }
 
   const onInputValueChange = (e: any, storageKey: string, indexForStock?: number) : void => {
     let {value} = e.target;
@@ -114,8 +88,30 @@ const Barter: NextPage = () => {
   }
 
   useEffect(() => {
-    calculate()
-  } ,[t4Check, hakovenTrade, margoTrade, t4Stock, calculate]);
+    var counts = 0;
+    var t4rcount = 0;
+
+    for (var i = 0; i < t4Check.length; i++) {
+      if(t4Check[i]) {
+        counts++;
+        if(t4Stock[i] - 4 < t4restock) {
+          t4rcount++;
+        }
+      }
+    }
+
+    let total = 1000000
+    // hakoven route
+    - (hakovenTrade >= hakovenThreshold ? (43780-(43780*parley/100))+((29430-(29430*parley/100))*2)+(36420-(36420*parley/100)) : 0) 
+    // margo route
+    - (1250 * margoThreshold / 100 <= margoTrade ? ((46544-(46544*parley/100))*3)+((58180-(58180*parley/100))*4) : 0)
+    // t5 trade (4 trade from each point)
+    - (counts * (14286-(14286*parley/100)) * 4)
+    // t4 restock if stock level fall below threshold after t5 trade
+    - (t4rcount * (14286-(14286*parley/100)) * 6);
+
+    setTotal(total);
+  } ,[t4Check, hakovenTrade, margoTrade, t4Stock, hakovenThreshold, margoThreshold, parley]);
 
   return (
     <div>
