@@ -84,7 +84,7 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
               <ImgsViewer
                 imgs={project.gallery?.map((url, index) => {
                   return {
-                    src: url
+                    src: '/portfolio' + url
                   }
                 })}
                 currImg={currImageIndex}
