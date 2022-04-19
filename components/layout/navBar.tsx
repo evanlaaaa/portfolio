@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "../link";
 
 export const NavBar = () => {
-  let router = useRouter();
+  const router = useRouter();
   let { asPath } = router;
     
   let y = 0;
@@ -62,7 +62,7 @@ export const NavBar = () => {
   useEffect(() => {
     window.addEventListener("scroll", scroll);
     return () => window.removeEventListener("scroll", scroll);
-  },[])
+  },[scroll])
 
   const onNavigatePressed = async (route: number) => {
     window.scrollTo({top: route, left: 0, behavior: 'smooth'});

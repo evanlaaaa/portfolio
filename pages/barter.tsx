@@ -28,10 +28,6 @@ const Barter: NextPage = () => {
     setT4Stock(JSON.parse(localStorage.getItem('stock') ?? JSON.stringify(Array(14).fill(0))));
   }, [])
 
-  useEffect(() => {
-    calculate()
-  } ,[t4Check, hakovenTrade, margoTrade, t4Stock]);
-
   const calculate = () : void => {
     var counts = 0;
     var t4rcount = 0;
@@ -116,6 +112,10 @@ const Barter: NextPage = () => {
     setT4Stock(temp);
     setT4Check(Array(14).fill(false));
   }
+
+  useEffect(() => {
+    calculate()
+  } ,[t4Check, hakovenTrade, margoTrade, t4Stock, calculate]);
 
   return (
     <div>

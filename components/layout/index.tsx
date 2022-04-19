@@ -2,8 +2,9 @@ import { NavBar } from "./navBar";
 import { useRouter } from 'next/router';
 
 
-const index: React.FC<any> = ({children}) => {
-  const { asPath, pathname } = useRouter();
+const index = ({children} : {children: any}) => {
+  const router = useRouter();
+  let { asPath } = router;
 
   return (
     <>
