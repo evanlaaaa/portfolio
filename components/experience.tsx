@@ -60,7 +60,7 @@ export const Experience = () => {
         <VStack w='full'>
           <Flex w='full' alignItems="center">
             <Box pr='5'>
-              <Text w='auto' fontWeight="bold" fontSize="2xl" color='orange.300'>Where I've worked</Text>
+              <Text w='auto' fontWeight="bold" fontSize="2xl" color='orange.300'>{"Where I\'ve worked"}</Text>
             </Box>
             <Box flex='1 0 auto'>
               <Divider />
@@ -70,13 +70,14 @@ export const Experience = () => {
             <Tabs orientation='vertical' variant='unstyled'>
               <TabList>
                 {
-                  experiences.map((job) => {
+                  experiences.map((job, index) => {
                     return (
                       <Tab 
-                      borderLeft='2px'
-                      borderColor='gray.100'
-                      _focus={{'boxShadow' : 'none'}}
-                      _selected={{'borderLeft': '2px', 'borderColor': 'orange.300'}}
+                        key={index}
+                        borderLeft='2px'
+                        borderColor='gray.100'
+                        _focus={{'boxShadow' : 'none'}}
+                        _selected={{'borderLeft': '2px', 'borderColor': 'orange.300'}}
                       >
                           {job.jobName}
                       </Tab>
@@ -87,9 +88,9 @@ export const Experience = () => {
 
               <TabPanels pl='10'>
                 {
-                  experiences.map((job) => {
+                  experiences.map((job, index) => {
                     return (
-                      <TabPanel>
+                      <TabPanel key={index}>
                         <Box>
                           <Text color="gray.700" fontSize="xl" fontWeight='semibold'>
                             {job.jobTitle + " @ "}
@@ -108,9 +109,9 @@ export const Experience = () => {
                               {job.dateRange}
                             </Text>
                             {
-                              job.description.map((description) => {
+                              job.description.map((description, index) => {
                                 return (
-                                  <HStack pt='2.5' alignItems="top">
+                                  <HStack pt='2.5' alignItems="top" key={index}>
                                     <Icon as={AiOutlineSwapRight} color='orange.500' mt='1' />
                                     <Text color="gray.500">
                                       {description}

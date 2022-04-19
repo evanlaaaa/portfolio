@@ -182,9 +182,10 @@ const Barter: NextPage = () => {
                 {
                   t4s.map((t4, index) => {
                     return (
-                      <Box border='1px' borderColor='gray.200' p='4' m='2'>
+                      <Box border='1px' borderColor='gray.200' p='4' m='2' key={index}>
                         <Checkbox value={t4Check[index]} position='absolute' ml='-6' bg='white' onChange={(e) => onT4Check(e, index)}/>
                         <Image
+                          alt={t4}
                           boxSize='40px'
                           src={'bdo/' + t4 + '.png'}
                         />
@@ -209,9 +210,10 @@ const Barter: NextPage = () => {
                 {
                   t4s.map((t4, i) => {
                     return (
-                      <Box border='1px' borderColor='gray.200' p='4' m='2'>
+                      <Box border='1px' borderColor='gray.200' p='4' m='2' key={i}>
                         <HStack>
                           <Image
+                            alt={t4}
                             boxSize='40px'
                             src={'bdo/' + t4 + '.png'}
                           />
@@ -251,9 +253,10 @@ const Barter: NextPage = () => {
                 {
                   t4s.map((t4, i) => {
                     return (
-                      <HStack>
+                      <HStack key={i}>
                         <Input value={t4Stock[i]} onChange={(e) => onInputValueChange(e, 'stock', i)}/>
                         <Image
+                          alt={t4}
                           boxSize='40px'
                           src={'bdo/' + t4 + '.png'}
                         />

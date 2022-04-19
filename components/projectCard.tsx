@@ -68,6 +68,7 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
                           onClick={(e) => onImageOpen(e, index)}
                         >
                           <Image 
+                            alt={url}
                             src={url} 
                             objectFit='cover'
                             boxSize='50px'
@@ -94,9 +95,9 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
           }
           <HStack py='5'>
             {
-              project.technologies.map((tech) => {
+              project.technologies.map((tech, index) => {
                 return (
-                  <Box bg='orange.100' p='1.5' borderRadius='md'>
+                  <Box bg='orange.100' p='1.5' borderRadius='md' key={index}>
                     <Text fontSize='xs' color='gray.500' fontFamily="Roboto Mono">
                       {tech}
                     </Text>
@@ -109,9 +110,10 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
             project.external &&
             <HStack>
               {
-                project.external.map((ext) => {
+                project.external.map((ext, index) => {
                   return (
                     <a
+                      key={index}
                       href={ext.link}
                     >
                       {ext.icon}
