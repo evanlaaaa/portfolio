@@ -15,6 +15,7 @@ export const NavBar = () => {
   const [isAboutActive, setIsAboutActive] = useState(false);
   const [isExperienceActive, setIsExperienceActive] = useState(false);
   const [isShowcaseActive, setIsShowcaseActive] = useState(false);
+  const [isContactActive, setIsContactActive] = useState(false);
 
   const route = [
     {
@@ -25,18 +26,23 @@ export const NavBar = () => {
     {
       name: "About Me",
       isActive: isAboutActive,
-      y: 700
+      y: 1000
     },
     {
       name: "Experience",
       isActive: isExperienceActive,
-      y: 1600
+      y: 1900
     },
     {
       name: "Showcase",
       isActive: isShowcaseActive,
-      y: 2400
+      y: 2700
     },
+    {
+      name: "Contact",
+      isActive: isContactActive,
+      y: 4790
+    }
   ]
 
   const scroll = () => {
@@ -44,11 +50,13 @@ export const NavBar = () => {
     setIsUp(window.scrollY > y ? false : true);
 
     setIsHeaderActive(window.scrollY >= 0 && window.scrollY <= 500);
-    setIsAboutActive(window.scrollY > 500 && window.scrollY <= 1400);
-    setIsExperienceActive(window.scrollY > 1400 && window.scrollY <= 2100);
-    setIsShowcaseActive(window.scrollY > 2100);
+    setIsAboutActive(window.scrollY > 700 && window.scrollY <= 1500);
+    setIsExperienceActive(window.scrollY > 1500 && window.scrollY <= 2200);
+    setIsShowcaseActive(window.scrollY > 2200 && window.scrollY <= 4490);
+    setIsContactActive(window.scrollY > 4490);
 
     y = window.scrollY;
+    console.log(y);
   }
 
   useEffect(() => {

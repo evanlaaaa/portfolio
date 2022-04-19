@@ -3,24 +3,27 @@ import Head from 'next/head'
 import { PortfolioHeader } from '../components/portfolioHeader';
 import { AboutMe } from '../components/about';
 import { Experience } from '../components/experience';
-import { Container, useDisclosure, VStack } from '@chakra-ui/react';
+import { Container, VStack } from '@chakra-ui/react';
 import { Showcase } from '../components/showcase';
+import { Footer } from '../components/footer';
+import { Contact } from '../components/contact';
 
 const Home: NextPage = () => {
 
-  const { isOpen, onToggle } = useDisclosure()
   return (
     <div>
       <Head>
         <title>Wai Choon | Home</title>
       </Head>
       <main>
+        <PortfolioHeader />
         <Container height="100vh" maxW="container.lg" mt={["5", "10"]}>
           <VStack align="flex-start">
-            <PortfolioHeader />
             <AboutMe />
             <Experience />
             <Showcase />
+            <Contact />
+            <Footer />
           </VStack>
         </Container>
       </main>

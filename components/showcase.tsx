@@ -1,5 +1,6 @@
 import { Box, Text, Divider, Image, Center, Flex, VStack, List, ListItem, ListIcon, HStack, SlideFade, Spacer, Link } from "@chakra-ui/react"
 import "@fontsource/roboto-mono";
+import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { External } from "../model/external";
 import { Project } from "../model/project";
@@ -43,9 +44,22 @@ export const Showcase = () => {
     }),
   ]
 
+  const [toShow, setToShow] = useState(false);
+
+  const scroll = () => {
+    if(window.scrollY > 2200) {
+      setToShow(true);
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", scroll);
+    return () => window.removeEventListener("scroll", scroll);
+  },[])
+
   return (
     <Box py='200px' w={["100%", "md", "container.lg"]} display='flex' alignSelf='flex-end'>
-      <SlideFade in={true} offsetX={80} style={{'width': '100%'}}>
+      <SlideFade in={toShow} offsetX={80} style={{'width': '100%'}}>
         <VStack w='full'>
           <Flex w='full' alignItems="center" >
             <Box pr='5'>
