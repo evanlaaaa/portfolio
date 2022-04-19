@@ -71,7 +71,7 @@ export const Showcase = () => {
           </Flex>
           {
             projects.map((project, index) => {
-              return <ProjectCard project={project} flip={index % 2 == 0} />
+              return <ProjectCard project={project} flip={index % 2 == 0} key={index}/>
             })
           }
         </VStack>

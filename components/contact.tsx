@@ -30,7 +30,7 @@ export const Contact = () => {
           <Flex w='100%' alignSelf="flex-end" wrap="wrap" direction="row" pt='5'>
             <VStack pl={['0', '0', '10']} align="center" flex='1' spacing='10'>
               <Text fontSize='md' color='gray.500' textAlign='center'>
-                I'm currently looking for new opportunities to grow my career experience. You can request for my resume by contacting me via email. I will do my best to get back to you as soon as possible.
+                {"I\'m currently looking for new opportunities to grow my career experience. You can request for my resume by contacting me via email. I will do my best to get back to you as soon as possible."}
               </Text>
               <Link style={{ textDecoration: 'none' }} href='mailto:waichoon97@gmail.com'>
                 <Button colorScheme='orange' variant='outline'>

@@ -56,6 +56,7 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
                 project.gallery?.map((url, index) => {
                   return (
                     <Box
+                      key={index}
                       p='2'
                       m='2'
                       border='1px' 
@@ -68,6 +69,7 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
                           onClick={(e) => onImageOpen(e, index)}
                         >
                           <Image 
+                            key={index}
                             alt={url}
                             src={url} 
                             objectFit='cover'
