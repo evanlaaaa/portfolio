@@ -56,7 +56,6 @@ export const NavBar = () => {
     setIsContactActive(window.scrollY > 4490);
 
     y = window.scrollY;
-    console.log(y);
   }, []);
 
   useEffect(() => {

@@ -35,7 +35,7 @@ export const AboutMe = () => {
               <Image
                 borderRadius='full'
                 boxSize='300px'
-                src='/pp.jpg'
+                src='/portfolio/pp.jpg'
                 alt='Wai Choon profile picture'
               />
             </Center>

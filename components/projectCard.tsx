@@ -36,7 +36,7 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
           borderRadius={'md'}
           width={500}
           height={350}
-          src={project.imageUrl}
+          src={'/portfolio' + project.imageUrl}
           alt={project.projectName}
         />
       </Center>
@@ -132,7 +132,7 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
           borderRadius={'md'}
           width={500}
           height={350}
-          src={project.imageUrl}
+          src={'/portfolio' + project.imageUrl}
           alt='Wai Choon profile picture'
         />
       </Center>
