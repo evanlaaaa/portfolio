@@ -2,6 +2,7 @@ import { Box, Link, Divider, VStack, Flex, Tab, TabList, TabPanel, TabPanels, Ic
 import { useEffect, useState } from 'react';
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import { Job } from '../model/job';
+import { isIOS, isMobile } from 'react-device-detect';
 
 export const Experience = () => {
   const experiences = [
@@ -56,8 +57,15 @@ export const Experience = () => {
   const [toShow, setToShow] = useState(false);
 
   const scroll = () => {
-    if(window.scrollY > 1200) {
-      setToShow(true);
+    if(isMobile) {
+      if(window.scrollY > 1700) {
+        setToShow(true);
+      }
+    }
+    else {
+      if(window.scrollY > 1200) {
+        setToShow(true);
+      }
     }
   }
 
@@ -67,8 +75,8 @@ export const Experience = () => {
   },[])
 
   return (
-    <Box py='200px' w={["100%", "md", "container.md"]} display='flex' h='750px'>
-      <SlideFade in={toShow} offsetX={-80}>
+    <Box py='200px' w={["100%", "md", "container.md"]} display='flex' h='auto'>
+      <SlideFade in={toShow} offsetX={ isIOS ? 0 : -80}>
         <VStack w='full'>
           <Flex w='full' alignItems="center">
             <Box pr='5'>

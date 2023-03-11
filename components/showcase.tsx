@@ -5,6 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import { External } from "../model/external";
 import { Project } from "../model/project";
 import { ProjectCard } from "./projectCard";
+import { isIOS, isMobile } from 'react-device-detect';
 
 export const Showcase = () => {
 
@@ -60,8 +61,15 @@ export const Showcase = () => {
   const [toShow, setToShow] = useState(false);
 
   const scroll = () => {
-    if(window.scrollY > 2200) {
-      setToShow(true);
+    if(isMobile) {
+      if(window.scrollY > 2700) {
+        setToShow(true);
+      }
+    }
+    else {
+      if(window.scrollY > 2200) {
+        setToShow(true);
+      }
     }
   }
 
@@ -72,7 +80,7 @@ export const Showcase = () => {
 
   return (
     <Box py='200px' w={["100%", "md", "container.lg"]} display='flex' alignSelf='flex-end'>
-      <SlideFade in={toShow} offsetX={80} style={{'width': '100%'}}>
+      <SlideFade in={toShow} offsetX={ isIOS ? 0 : 80} style={{'width': '100%'}}>
         <VStack w='full'>
           <Flex w='full' alignItems="center" >
             <Box pr='5'>

@@ -3,13 +3,21 @@ import { useEffect, useState } from "react";
 import { FaReact, FaJava, FaPhp, FaSwift } from 'react-icons/fa';
 import { RiFlutterFill } from 'react-icons/ri'
 import { SiTypescript } from 'react-icons/si'
+import { isIOS, isMobile } from 'react-device-detect';
 
 export const AboutMe = () => {
   const [toShow, setToShow] = useState(false);
 
   const scroll = () => {
-    if(window.scrollY > 200) {
-      setToShow(true);
+    if(isMobile) {
+      if(window.scrollY > 500) {
+        setToShow(true);
+      }
+    }
+    else {
+      if(window.scrollY > 200) {
+        setToShow(true);
+      }
     }
   }
 
@@ -19,8 +27,8 @@ export const AboutMe = () => {
   },[])
 
   return (
-    <Box py='200px' w={["100%", "md", "container.md"]} display='flex' alignSelf='flex-end'>
-      <SlideFade in={toShow} offsetX={80}>
+    <Box py='200px' w={["100%", "md", "container.md"]} display={'flex'} alignSelf='flex-end'>
+      <SlideFade in={toShow} offsetX={ isIOS ? 0 : 80}>
         <VStack w='full'>
           <Flex w='full' alignItems="center">
             <Box pr='5'>

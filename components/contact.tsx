@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FaReact, FaJava, FaPhp, FaSwift } from 'react-icons/fa';
 import { RiFlutterFill } from 'react-icons/ri'
 import { SiTypescript } from 'react-icons/si'
+import { isIOS, isMobile } from 'react-device-detect';
 
 export const Contact = () => {
   const [toShow, setToShow] = useState(false);
@@ -10,6 +11,16 @@ export const Contact = () => {
   const scroll = () => {
     if(window.scrollY > 4600) {
       setToShow(true);
+    }
+    if(isMobile) {
+      if(window.scrollY > 7000) {
+        setToShow(true);
+      }
+    }
+    else {
+      if(window.scrollY > 4600) {
+        setToShow(true);
+      }
     }
   }
 
@@ -20,7 +31,7 @@ export const Contact = () => {
 
   return (
     <Box pt='100px' pb='250px' w={["100%", "md", "md"]} display='flex' alignSelf='center'>
-      <SlideFade in={toShow} offsetX={80}>
+      <SlideFade in={toShow} offsetX={ isIOS ? 0 : 80}>
         <VStack w='full'>
           <Flex w='full' alignItems="center">
             <Center w='full'>

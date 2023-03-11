@@ -1,6 +1,7 @@
 import { Box, Button, Container, HStack, Image, Slide, useDisclosure } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
+import { isMobile } from 'react-device-detect';
 import Link from "../link";
 
 export const NavBar = () => {
@@ -26,34 +27,46 @@ export const NavBar = () => {
     {
       name: "About Me",
       isActive: isAboutActive,
-      y: 1000
+      y: isMobile ? 980 : 1000
     },
     {
       name: "Experience",
       isActive: isExperienceActive,
-      y: 1900
+      y: isMobile ? 2100 : 1900
     },
     {
       name: "Showcase",
       isActive: isShowcaseActive,
-      y: 2700
+      y: isMobile ? 3060 : 2700
     },
     {
       name: "Contact",
       isActive: isContactActive,
-      y: 4790
+      y: isMobile ? 7993 : 5300
     }
   ]
 
   const scroll = useCallback(() => {
-    setIsTop(window.scrollY == 0);
-    setIsUp(window.scrollY > y ? false : true);
+    if(!isMobile) {
+      setIsTop(window.scrollY == 0);
+      setIsUp(window.scrollY > y ? false : true);
 
-    setIsHeaderActive(window.scrollY >= 0 && window.scrollY <= 500);
-    setIsAboutActive(window.scrollY > 700 && window.scrollY <= 1500);
-    setIsExperienceActive(window.scrollY > 1500 && window.scrollY <= 2200);
-    setIsShowcaseActive(window.scrollY > 2200 && window.scrollY <= 4490);
-    setIsContactActive(window.scrollY > 4490);
+      setIsHeaderActive(window.scrollY >= 0 && window.scrollY <= 500);
+      setIsAboutActive(window.scrollY > 700 && window.scrollY <= 1500);
+      setIsExperienceActive(window.scrollY > 1500 && window.scrollY <= 2200);
+      setIsShowcaseActive(window.scrollY > 2200 && window.scrollY <= 5100);
+      setIsContactActive(window.scrollY > 5100);
+    }
+    else {
+      setIsTop(window.scrollY == 0);
+      setIsUp(window.scrollY > y ? false : true);
+
+      setIsHeaderActive(window.scrollY >= 0 && window.scrollY <= 880);
+      setIsAboutActive(window.scrollY > 880 && window.scrollY <= 2000);
+      setIsExperienceActive(window.scrollY > 2000 && window.scrollY <= 2960);
+      setIsShowcaseActive(window.scrollY > 2960 && window.scrollY <= 7500);
+      setIsContactActive(window.scrollY > 7500);
+    }
 
     y = window.scrollY;
   }, []);
@@ -81,7 +94,7 @@ export const NavBar = () => {
         w="100%"
         bg="white"
       >
-        <Container maxW="container.lg">
+        <Container maxW="container.lg" overflow={'auto'}>
           <HStack>
             {
               route.map((r, index) => {
@@ -90,9 +103,10 @@ export const NavBar = () => {
                     key={index}
                     p={2}
                     rounded={"md"}
-                    currentPath={asPath}
+                    currentpath={asPath}
                     isActive={r.isActive}
                     onClick={() => onNavigatePressed(r.y)}
+                    whiteSpace='nowrap'
                   >
                     {r.name}
                   </Link>
