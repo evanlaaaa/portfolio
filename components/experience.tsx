@@ -6,11 +6,23 @@ import { Job } from '../model/job';
 export const Experience = () => {
   const experiences = [
     new Job({
+      jobName: "V6 Technology",
+      jobTitle: "Software Engineer",
+      jobCompany: "V6 Technology",
+      companyLink: "https://www.v6technology.net/",
+      dateRange: "Aug 2022 - Present",
+      description: [
+        "Developed a interactive Kline chart third-party library",
+        "Designing and building mobile apps that enhance their experience while using services",
+        "Wrote unit test and integration test using Appium for automated testing",
+      ]
+    }),
+    new Job({
       jobName: "Silkron",
       jobTitle: "Software Engineer",
       jobCompany: "Silkron",
       companyLink: "https://www.silkron.com/",
-      dateRange: "Jan 2021 - Present",
+      dateRange: "Jan 2021 - Aug 2022",
       description: [
         "Designing and building a mobile application to facilitate user communication within Vendron Cloud ecosystem",
         "Worked on integration with third-party identity verification services, built and designed new user registration flow",

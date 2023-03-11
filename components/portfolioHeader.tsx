@@ -18,10 +18,10 @@ export const PortfolioHeader = () => {
               <Text fontSize='md' color='whiteAlpha.800'>
                 {"A Web/Mobile application developer with a passion for everything. Currently, I’m focused on building accessible, human-centered mobile application at "}
                 <Link 
-                  href="https://www.silkron.com/"
+                  href="https://www.v6technology.net/"
                   color="orange.300"
                 >
-                  Silkron
+                  V6 Technology
                 </Link>
               </Text>
               </Box>
