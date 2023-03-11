@@ -42,6 +42,19 @@ export const Showcase = () => {
         })
       ]
     }),
+    new Project({
+      projectName: "Reverse Engineer MT-Framework *.ipr file",
+      projectDescription: "Yet another small project to burn times. Developed a Python addon for Blender to import 3D models from binary *.ipr files. Used 010 Editor to analyze the binary file structure and extract relevant data. Created custom import functions in Python that converted the extracted data into a format compatible with Blender's API",
+      imageUrl: '/ipr.png',
+      technologies: ["Python", "010 template", "Blender"],
+      gallery: ["/ipr/1.png", "/ipr/2.png"],
+      external: [
+        new External({
+          icon: <FaGithub size={25}/>,
+          link: 'https://github.com/evanlaaaa/MT-Framework-IPR'
+        })
+      ]
+    }),
   ]
 
   const [toShow, setToShow] = useState(false);
