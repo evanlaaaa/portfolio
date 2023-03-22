@@ -8,7 +8,7 @@ import { NavigateContext } from "./layout";
 
 export const AboutMe = () => {
   const [toShow, setToShow] = useState(false);
-  const boxRef = useRef<HTMLDivElement>();
+  const boxRef = useRef<HTMLDivElement>(null);
 
   const { aboutOffset, setAboutOffset } = useContext(NavigateContext);
 
