@@ -14,9 +14,11 @@ export const Experience = () => {
       companyLink: "https://www.v6technology.net/",
       dateRange: "Aug 2022 - Present",
       description: [
-        "Developed a interactive Kline chart third-party library",
-        "Designing and building mobile apps that enhance their experience while using services",
-        "Wrote unit test and integration test using Appium for automated testing",
+        "Developed interactive Kline charts from scratch in Flutter to meet client’s requirement",
+        "Wrote automated unit and integration test using Appium and Mocha for their existed Kotlin and Swift app",
+        "Collaborate with UI/UX team and translate design wireframes into high quality UIs",
+        "Improved UI/UX of existed app with Swift UIKit",
+        "Building mobile apps using Flutter that interact with client's new extended fintech services"
       ]
     }),
     new Job({
