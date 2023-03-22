@@ -8,7 +8,7 @@ import { NavigateContext } from "./layout";
 
 export const AboutMe = () => {
   const [toShow, setToShow] = useState(false);
-  const boxRef = useRef();
+  const boxRef = useRef<HTMLElement>();
 
   const { aboutOffset, setAboutOffset } = useContext(NavigateContext);
 
@@ -19,7 +19,7 @@ export const AboutMe = () => {
   }
 
   const getPosition = () => {
-    const { offsetTop } = boxRef.current;
+    const offsetTop = boxRef.current?.offsetTop ?? 0;
     setAboutOffset(offsetTop + 250);
   };
 

@@ -56,7 +56,7 @@ export const Experience = () => {
   ]
 
   const [toShow, setToShow] = useState(false);
-  const boxRef = useRef();
+  const boxRef = useRef<HTMLElement>();
 
   const { experienceOffset, setExperienceOffset } = useContext(NavigateContext);
 
@@ -67,7 +67,7 @@ export const Experience = () => {
   }
 
   const getPosition = () => {
-    const { offsetTop } = boxRef.current;
+    const offsetTop = boxRef.current?.offsetTop ?? 0;
     setExperienceOffset(offsetTop + 200);
   };
 

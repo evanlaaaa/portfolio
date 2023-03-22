@@ -8,7 +8,7 @@ import { NavigateContext } from "./layout";
 
 export const Contact = () => {
   const [toShow, setToShow] = useState(false);
-  const boxRef = useRef();
+  const boxRef = useRef<HTMLElement>();
 
   const { contactOffset, setContactOffset } = useContext(NavigateContext);
 
@@ -19,7 +19,7 @@ export const Contact = () => {
   }
 
   const getPosition = () => {
-    const { offsetTop } = boxRef.current;
+    const offsetTop = boxRef.current?.offsetTop ?? 0;
     setContactOffset(offsetTop + 100);
   };
 
