@@ -1,8 +1,39 @@
-import { createContext, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useState } from "react";
 import { NavBar } from "./navBar";
 import { useRouter } from 'next/router';
 
-export const NavigateContext = createContext({});
+type NavigateContextType = {
+  aboutOffset: number,
+  setAboutOffset: Dispatch<SetStateAction<number>>,
+  
+  experienceOffset: number,
+  setExperienceOffset: Dispatch<SetStateAction<number>>,
+
+  showcaseOffset: number,
+  setShowcaseOffset: Dispatch<SetStateAction<number>>,
+
+  contactOffset: number,
+  setContactOffset: Dispatch<SetStateAction<number>>,
+}
+
+export const NavigateContext = createContext<NavigateContextType>({
+  aboutOffset: 0,
+  setAboutOffset: function (value: SetStateAction<number>): void {
+    throw new Error("Function not implemented.");
+  },
+  experienceOffset: 0,
+  setExperienceOffset: function (value: SetStateAction<number>): void {
+    throw new Error("Function not implemented.");
+  },
+  showcaseOffset: 0,
+  setShowcaseOffset: function (value: SetStateAction<number>): void {
+    throw new Error("Function not implemented.");
+  },
+  contactOffset: 0,
+  setContactOffset: function (value: SetStateAction<number>): void {
+    throw new Error("Function not implemented.");
+  }
+});
 
 const Index = ({children} : {children: any}) => {
   const router = useRouter();
