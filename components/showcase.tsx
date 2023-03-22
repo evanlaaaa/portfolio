@@ -60,7 +60,7 @@ export const Showcase = () => {
   ]
 
   const [toShow, setToShow] = useState(false);
-  const boxRef = useRef<HTMLElement>();
+  const boxRef = useRef<HTMLDivElement>();
 
   const { showcaseOffset, setShowcaseOffset } = useContext(NavigateContext);
 

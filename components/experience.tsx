@@ -56,7 +56,7 @@ export const Experience = () => {
   ]
 
   const [toShow, setToShow] = useState(false);
-  const boxRef = useRef<HTMLElement>();
+  const boxRef = useRef<HTMLDivElement>();
 
   const { experienceOffset, setExperienceOffset } = useContext(NavigateContext);
 
