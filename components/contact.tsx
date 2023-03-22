@@ -1,37 +1,38 @@
 import { Box, Text, Divider, Image, Center, Flex, VStack, List, ListItem, ListIcon, HStack, SlideFade, Button, Link } from "@chakra-ui/react"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { FaReact, FaJava, FaPhp, FaSwift } from 'react-icons/fa';
 import { RiFlutterFill } from 'react-icons/ri'
 import { SiTypescript } from 'react-icons/si'
-import { isIOS, isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
+import { NavigateContext } from "./layout";
 
 export const Contact = () => {
   const [toShow, setToShow] = useState(false);
+  const boxRef = useRef();
+
+  const { contactOffset, setContactOffset } = useContext(NavigateContext);
 
   const scroll = () => {
-    if(window.scrollY > 4600) {
+    if(window.scrollY > contactOffset && !toShow) {
       setToShow(true);
-    }
-    if(isMobile) {
-      if(window.scrollY > 7000) {
-        setToShow(true);
-      }
-    }
-    else {
-      if(window.scrollY > 4600) {
-        setToShow(true);
-      }
     }
   }
 
+  const getPosition = () => {
+    const { offsetTop } = boxRef.current;
+    setContactOffset(offsetTop + 100);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", scroll);
+    window.addEventListener("resize", getPosition)
+    getPosition();
     return () => window.removeEventListener("scroll", scroll);
   },[])
 
   return (
-    <Box pt='100px' pb='250px' w={["100%", "md", "md"]} display='flex' alignSelf='center'>
-      <SlideFade in={toShow} offsetX={ isIOS ? 0 : 80}>
+    <Box pt='100px' pb='250px' w={["100%", "md", "md"]} display='flex' alignSelf='center' ref={boxRef}>
+      <SlideFade in={toShow} offsetX={ isMobile ? 0 : 80}>
         <VStack w='full'>
           <Flex w='full' alignItems="center">
             <Center w='full'>

@@ -1,34 +1,38 @@
 import { Box, Text, Divider, Image, Center, Flex, VStack, List, ListItem, ListIcon, HStack, SlideFade } from "@chakra-ui/react"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaReact, FaJava, FaPhp, FaSwift } from 'react-icons/fa';
 import { RiFlutterFill } from 'react-icons/ri'
 import { SiTypescript } from 'react-icons/si'
-import { isIOS, isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
+import { NavigateContext } from "./layout";
 
 export const AboutMe = () => {
   const [toShow, setToShow] = useState(false);
+  const boxRef = useRef();
+
+  const { aboutOffset, setAboutOffset } = useContext(NavigateContext);
 
   const scroll = () => {
-    if(isMobile) {
-      if(window.scrollY > 500) {
-        setToShow(true);
-      }
-    }
-    else {
-      if(window.scrollY > 200) {
-        setToShow(true);
-      }
+    if(window.scrollY > aboutOffset && !toShow) {
+      setToShow(true);
     }
   }
 
+  const getPosition = () => {
+    const { offsetTop } = boxRef.current;
+    setAboutOffset(offsetTop + 250);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", scroll);
+    window.addEventListener("resize", getPosition)
+    getPosition();
     return () => window.removeEventListener("scroll", scroll);
   },[])
 
   return (
-    <Box py='200px' w={["100%", "md", "container.md"]} display={'flex'} alignSelf='flex-end'>
-      <SlideFade in={toShow} offsetX={ isIOS ? 0 : 80}>
+    <Box py='200px' w={["100%", "md", "container.md"]} display={'flex'} alignSelf='flex-end' ref={boxRef}>
+      <SlideFade in={toShow} offsetX={ isMobile ? 0 : 80 }>
         <VStack w='full'>
           <Flex w='full' alignItems="center">
             <Box pr='5'>

@@ -1,4 +1,4 @@
-import { Box, Center, Flex, VStack, Image, Text, Spacer, HStack } from "@chakra-ui/react";
+import { Box, Center, Flex, VStack, Image, Text, Spacer, HStack, Wrap, WrapItem } from "@chakra-ui/react";
 import { Project } from "../model/project";
 
 // @ts-ignore
@@ -95,19 +95,19 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
               />
             </Flex>
           }
-          <HStack py='5'>
+          <Wrap py='5'>
             {
               project.technologies.map((tech, index) => {
                 return (
-                  <Box bg='orange.100' p='1.5' borderRadius='md' key={index}>
-                    <Text fontSize='xs' color='gray.500' fontFamily="Roboto Mono">
+                  <WrapItem bg='orange.100' p='1.5' borderRadius='md' key={index}>
+                    <Text fontSize='xs' color='gray.500' fontFamily="Roboto Mono" whiteSpace='nowrap' overflow='hidden'>
                       {tech}
                     </Text>
-                  </Box> 
+                  </WrapItem> 
                 );
               })
             }
-          </HStack>
+          </Wrap>
           {
             project.external &&
             <HStack>

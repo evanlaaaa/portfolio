@@ -1,8 +1,9 @@
 import { Box, Link, Divider, VStack, Flex, Tab, TabList, TabPanel, TabPanels, Icon, Tabs, Text, HStack, SlideFade } from '@chakra-ui/react'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import { Job } from '../model/job';
-import { isIOS, isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
+import { NavigateContext } from './layout';
 
 export const Experience = () => {
   const experiences = [
@@ -23,7 +24,7 @@ export const Experience = () => {
       jobTitle: "Software Engineer",
       jobCompany: "Silkron",
       companyLink: "https://www.silkron.com/",
-      dateRange: "Jan 2021 - Aug 2022",
+      dateRange: "Jan 2021 - Jul 2022",
       description: [
         "Designing and building a mobile application to facilitate user communication within Vendron Cloud ecosystem",
         "Worked on integration with third-party identity verification services, built and designed new user registration flow",
@@ -55,28 +56,31 @@ export const Experience = () => {
   ]
 
   const [toShow, setToShow] = useState(false);
+  const boxRef = useRef();
+
+  const { experienceOffset, setExperienceOffset } = useContext(NavigateContext);
 
   const scroll = () => {
-    if(isMobile) {
-      if(window.scrollY > 1700) {
-        setToShow(true);
-      }
-    }
-    else {
-      if(window.scrollY > 1200) {
-        setToShow(true);
-      }
+    if(window.scrollY > experienceOffset && !toShow) {
+      setToShow(true);
     }
   }
 
+  const getPosition = () => {
+    const { offsetTop } = boxRef.current;
+    setExperienceOffset(offsetTop + 200);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", scroll);
+    window.addEventListener("resize", getPosition)
+    getPosition();
     return () => window.removeEventListener("scroll", scroll);
   },[])
 
   return (
-    <Box py='200px' w={["100%", "md", "container.md"]} display='flex' h='auto'>
-      <SlideFade in={toShow} offsetX={ isIOS ? 0 : -80}>
+    <Box py='200px' w={["100%", "md", "container.md"]} display='flex' h='auto' ref={boxRef}>
+      <SlideFade in={toShow} offsetX={ isMobile ? 0 : -80}>
         <VStack w='full'>
           <Flex w='full' alignItems="center">
             <Box pr='5'>

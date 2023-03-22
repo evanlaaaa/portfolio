@@ -1,12 +1,13 @@
 import { Box, Center, Heading, Link, SlideFade, Text } from "@chakra-ui/react"
+import { isMobile } from 'react-device-detect'
 
 export const PortfolioHeader = () => {
   return (
-    <Box w='full' h='100vh' bgImage="url('/portfolio/test.jpg')" bgSize='cover'>
-      <Center>
-        <Box w='container.lg'>
-          <Box mt='40%' mb='250px' w={["100%", "md", "container.md"]} bg='blackAlpha.500' p='10' borderRadius='md' h='auto'>
-            <SlideFade in={true} offsetX={-80} delay={0.5}>
+    <Box mt="64px" w='full' h='100vh' bgImage="url('/portfolio/test.jpg')" bgSize='cover' display='flex' alignItems='center'>
+      <Box>
+        <Box w='full'  ml={['0', '0', '100px']}>
+          <Box w={["100%", "container.md", "container.md"]} bg='blackAlpha.500' p='10' borderRadius='md' h='auto'>
+            <SlideFade in={true} offsetX={ isMobile ? 0 : -80} delay={0.5}>
               <Text fontWeight="semibold" fontSize="lg" color='whiteAlpha.800' pb="2.5">
                 Hi, my name is
               </Text>
@@ -28,7 +29,7 @@ export const PortfolioHeader = () => {
             </SlideFade>
           </Box>
         </Box>
-      </Center>
+      </Box>
     </Box>
     
   )

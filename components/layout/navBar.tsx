@@ -1,8 +1,9 @@
 import { Box, Button, Container, HStack, Image, Slide, useDisclosure } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useContext } from "react";
 import { isMobile } from 'react-device-detect';
 import Link from "../link";
+import { NavigateContext } from ".";
 
 export const NavBar = () => {
   const router = useRouter();
@@ -18,6 +19,8 @@ export const NavBar = () => {
   const [isShowcaseActive, setIsShowcaseActive] = useState(false);
   const [isContactActive, setIsContactActive] = useState(false);
 
+  const { aboutOffset, experienceOffset, showcaseOffset, contactOffset } = useContext(NavigateContext);
+
   const route = [
     {
       name: "Home",
@@ -27,49 +30,37 @@ export const NavBar = () => {
     {
       name: "About Me",
       isActive: isAboutActive,
-      y: isMobile ? 980 : 1000
+      y: aboutOffset
     },
     {
       name: "Experience",
       isActive: isExperienceActive,
-      y: isMobile ? 2100 : 1900
+      y: experienceOffset
     },
     {
       name: "Showcase",
       isActive: isShowcaseActive,
-      y: isMobile ? 3060 : 2700
+      y: showcaseOffset
     },
     {
       name: "Contact",
       isActive: isContactActive,
-      y: isMobile ? 7993 : 5300
+      y: contactOffset
     }
   ]
 
   const scroll = useCallback(() => {
-    if(!isMobile) {
-      setIsTop(window.scrollY == 0);
-      setIsUp(window.scrollY > y ? false : true);
+    setIsTop(window.scrollY == 0);
+    setIsUp(window.scrollY > y ? false : true);
 
-      setIsHeaderActive(window.scrollY >= 0 && window.scrollY <= 500);
-      setIsAboutActive(window.scrollY > 700 && window.scrollY <= 1500);
-      setIsExperienceActive(window.scrollY > 1500 && window.scrollY <= 2200);
-      setIsShowcaseActive(window.scrollY > 2200 && window.scrollY <= 5100);
-      setIsContactActive(window.scrollY > 5100);
-    }
-    else {
-      setIsTop(window.scrollY == 0);
-      setIsUp(window.scrollY > y ? false : true);
-
-      setIsHeaderActive(window.scrollY >= 0 && window.scrollY <= 880);
-      setIsAboutActive(window.scrollY > 880 && window.scrollY <= 2000);
-      setIsExperienceActive(window.scrollY > 2000 && window.scrollY <= 2960);
-      setIsShowcaseActive(window.scrollY > 2960 && window.scrollY <= 7500);
-      setIsContactActive(window.scrollY > 7500);
-    }
+    setIsHeaderActive(window.scrollY >= 0 && window.scrollY <= aboutOffset);
+    setIsAboutActive(window.scrollY > aboutOffset && window.scrollY <= experienceOffset);
+    setIsExperienceActive(window.scrollY > experienceOffset && window.scrollY <= showcaseOffset);
+    setIsShowcaseActive(window.scrollY > showcaseOffset && window.scrollY <= contactOffset);
+    setIsContactActive(window.scrollY > contactOffset);
 
     y = window.scrollY;
-  }, []);
+  }, [aboutOffset, experienceOffset, showcaseOffset, contactOffset]);
 
   useEffect(() => {
     window.addEventListener("scroll", scroll);

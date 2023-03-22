@@ -1,11 +1,12 @@
 import { Box, Text, Divider, Image, Center, Flex, VStack, List, ListItem, ListIcon, HStack, SlideFade, Spacer, Link } from "@chakra-ui/react"
 import "@fontsource/roboto-mono";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { External } from "../model/external";
 import { Project } from "../model/project";
 import { ProjectCard } from "./projectCard";
-import { isIOS, isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
+import { NavigateContext } from "./layout";
 
 export const Showcase = () => {
 
@@ -59,28 +60,31 @@ export const Showcase = () => {
   ]
 
   const [toShow, setToShow] = useState(false);
+  const boxRef = useRef();
+
+  const { showcaseOffset, setShowcaseOffset } = useContext(NavigateContext);
 
   const scroll = () => {
-    if(isMobile) {
-      if(window.scrollY > 2700) {
-        setToShow(true);
-      }
-    }
-    else {
-      if(window.scrollY > 2200) {
-        setToShow(true);
-      }
+    if(window.scrollY > showcaseOffset && !toShow) {
+      setToShow(true);
     }
   }
 
+  const getPosition = () => {
+    const { offsetTop } = boxRef.current;
+    setShowcaseOffset(offsetTop + 200);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", scroll);
+    window.addEventListener("resize", getPosition)
+    getPosition();
     return () => window.removeEventListener("scroll", scroll);
   },[])
 
   return (
-    <Box py='200px' w={["100%", "md", "container.lg"]} display='flex' alignSelf='flex-end'>
-      <SlideFade in={toShow} offsetX={ isIOS ? 0 : 80} style={{'width': '100%'}}>
+    <Box py='200px' w={["100%", "md", "container.lg"]} display='flex' alignSelf='flex-end' ref={boxRef}>
+      <SlideFade in={toShow} offsetX={ isMobile ? 0 : 80} style={{'width': '100%'}}>
         <VStack w='full'>
           <Flex w='full' alignItems="center" >
             <Box pr='5'>
