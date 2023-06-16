@@ -14,10 +14,11 @@ export const Experience = () => {
       companyLink: "https://www.v6technology.net/",
       dateRange: "Aug 2022 - Present",
       description: [
+        "Migrated existing Laravel Blade views to React.js using Inertia.js, as well as revamped the UI/UX, providing a smoother and more interactive user experience",
+        "Established CI pipelines using GitLab CI to automate testing for Flutter app",
         "Developed interactive Kline charts from scratch in Flutter to meet client’s requirement",
         "Wrote automated unit and integration test using Appium and Mocha for their existed Kotlin and Swift app",
-        "Collaborate with UI/UX team and translate design wireframes into high quality UIs",
-        "Improved UI/UX of existed app with Swift UIKit",
+        "Collaborate with the UI/UX team to translate design wireframes into high-quality UIs and improve the UI/UX of the existing Swift app with UIKit",
         "Building mobile apps using Flutter that interact with client's new extended fintech services"
       ]
     }),
