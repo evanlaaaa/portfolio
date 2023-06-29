@@ -1,9 +1,9 @@
-import { Box, Center, Flex, VStack, Image, Text, Spacer, HStack, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, Center, Flex, VStack, Image, Text, Spacer, HStack, IconButton, Wrap, WrapItem } from "@chakra-ui/react";
 import { Project } from "../model/project";
+import ImageViewer from 'react-simple-image-viewer';
 
 // @ts-ignore
-import ImgsViewer from "react-images-viewer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: boolean}) => {
   const marginOverlapSize = "-20px";
@@ -17,7 +17,6 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
   }
 
   const onImageClose = () : void => {
-    setCurrImageIndex(0);
     setIsOpen(false);
   }
 
@@ -81,18 +80,15 @@ export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: b
                   )
                 })
               }
-              <ImgsViewer
-                imgs={project.gallery?.map((url, index) => {
-                  return {
-                    src: '/portfolio' + url
-                  }
-                })}
-                currImg={currImageIndex}
-                isOpen={isOpen}
-                onClose={onImageClose}
-                onClickNext={onClickNext}
-                onClickPrev={onClickPrev}
-              />
+              {isOpen &&
+                <ImageViewer
+                  src={ project.gallery.map((v) => `/portfolio/${v}`) }
+                  currentIndex={ currImageIndex }
+                  disableScroll={ false }
+                  closeOnClickOutside={ true }
+                  onClose={ onImageClose }
+                />
+              }
             </Flex>
           }
           <Wrap py='5'>

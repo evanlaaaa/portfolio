@@ -20,16 +20,20 @@ export const Contact = () => {
 
   const getPosition = () => {
     const offsetTop = boxRef.current?.offsetTop ?? 0;
-    setContactOffset(offsetTop + 100);
-  };
+    setContactOffset(offsetTop - window.innerHeight + 500);
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", scroll);
-    window.addEventListener("resize", getPosition)
     getPosition();
-    return () => window.removeEventListener("scroll", scroll);
   },[])
 
+  useEffect(() => {
+    if(contactOffset != 0) {
+      window.addEventListener("scroll", scroll);
+      window.addEventListener("resize", getPosition)
+    }
+  }, [contactOffset])
+  
   return (
     <Box pt='100px' pb='250px' w={["100%", "md", "md"]} display='flex' alignSelf='center' ref={boxRef}>
       <SlideFade in={toShow} offsetX={ isMobile ? 0 : 80}>

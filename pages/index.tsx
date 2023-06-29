@@ -14,6 +14,7 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Wai Choon | Home</title>
+        <link rel="icon" href="/portfolio/favicon.ico" />
       </Head>
       <main>
         <PortfolioHeader />

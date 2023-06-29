@@ -1,5 +1,5 @@
 import { Box, Link, Divider, VStack, Flex, Tab, TabList, TabPanel, TabPanels, Icon, Tabs, Text, HStack, SlideFade } from '@chakra-ui/react'
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import { Job } from '../model/job';
 import { isMobile } from 'react-device-detect';
@@ -71,15 +71,19 @@ export const Experience = () => {
 
   const getPosition = () => {
     const offsetTop = boxRef.current?.offsetTop ?? 0;
-    setExperienceOffset(offsetTop + 200);
-  };
+    setExperienceOffset(offsetTop - window.innerHeight + 500);
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", scroll);
-    window.addEventListener("resize", getPosition)
     getPosition();
-    return () => window.removeEventListener("scroll", scroll);
   },[])
+
+  useEffect(() => {
+    if(experienceOffset != 0) {
+      window.addEventListener("scroll", scroll);
+      window.addEventListener("resize", getPosition)
+    }
+  }, [experienceOffset])
 
   return (
     <Box py='200px' w={["100%", "md", "container.md"]} display='flex' h='auto' ref={boxRef}>

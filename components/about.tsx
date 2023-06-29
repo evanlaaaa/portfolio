@@ -20,15 +20,19 @@ export const AboutMe = () => {
 
   const getPosition = () => {
     const offsetTop = boxRef.current?.offsetTop ?? 0;
-    setAboutOffset(offsetTop + 250);
-  };
+    setAboutOffset(offsetTop - window.innerHeight + 500);
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", scroll);
-    window.addEventListener("resize", getPosition)
     getPosition();
-    return () => window.removeEventListener("scroll", scroll);
   },[])
+
+  useEffect(() => {
+    if(aboutOffset != 0) {
+      window.addEventListener("scroll", scroll);
+      window.addEventListener("resize", getPosition)
+    }
+  }, [aboutOffset])
 
   return (
     <Box py='200px' w={["100%", "md", "container.md"]} display={'flex'} alignSelf='flex-end' ref={boxRef}>
