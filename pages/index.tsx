@@ -1,24 +1,23 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { PortfolioHeader } from '../components/portfolioHeader';
-import { AboutMe } from '../components/about';
-import { Experience } from '../components/experience';
 import { Container, VStack } from '@chakra-ui/react';
-import { Showcase } from '../components/showcase';
-import { Footer } from '../components/footer';
+import { AboutMe } from '../components/about';
 import { Contact } from '../components/contact';
+import { Experience } from '../components/experience';
+import { Footer } from '../components/footer';
+import { Showcase } from '../components/showcase';
 
 const Home: NextPage = () => {
-
   return (
     <div>
       <Head>
         <title>Wai Choon | Home</title>
         <link rel="icon" href="/portfolio/favicon.ico" />
       </Head>
-      <main>
+      {/* <main style={{overflow: 'hidden'}}> */}
         <PortfolioHeader />
-        <Container height="100vh" maxW="container.lg" mt={["5", "10"]}>
+        <Container maxW="container.lg" mt={["5", "10"]}>
           <VStack align="flex-start">
             <AboutMe />
             <Experience />
@@ -27,7 +26,7 @@ const Home: NextPage = () => {
             <Footer />
           </VStack>
         </Container>
-      </main>
+      {/* </main> */}
     </div>
   )
 }

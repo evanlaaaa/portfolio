@@ -8,9 +8,19 @@ const nextConfig = {
     { dev, dir, outDir, distDir, buildId }
   ) {
     return {
-      '/': { page: '/' },
+      '/portfolio': { page: '/' },
       '/barter': { page: '/barter' }
     }
+  },
+  redirects: async function() {
+    return [
+      {
+        source: '/',
+        destination: '/portfolio',
+        basePath: false,
+        permanent: true,
+      },
+    ]
   },
 }
 
