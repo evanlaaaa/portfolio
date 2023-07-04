@@ -1,10 +1,13 @@
-const ScribblesFour = ({fill, w, h, transform} : { fill: string, w?: string, h?: string, transform: string}) => {
+import { Keyframes, keyframes } from "@emotion/react";
+
+const ScribblesFour = ({fill, w, h, transform} : { fill: string, w?: string, h?: string, transform: string}) => {  
   return (
-    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 591.000000 646.000000" fill={fill} width={w} height={h} transform={transform}
+    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 591.000000 646.000000"
+    fill={fill} width={w} height={h} transform={transform}
       preserveAspectRatio="xMidYMid meet">
 
-      <g transform="translate(0.000000,646.000000) scale(0.100000,-0.100000)" stroke="none">
-      <path d="M3937 5819 c-58 -14 -94 -36 -163 -100 -36 -33 -91 -72 -129 -90 -70
+      <g transform="translate(0.000000,646.000000) scale(0.100000,-0.100000)">
+      <path strokeWidth="1000px" d="M3937 5819 c-58 -14 -94 -36 -163 -100 -36 -33 -91 -72 -129 -90 -70
       -33 -222 -132 -375 -245 -145 -107 -333 -238 -700 -489 -715 -487 -753 -517
       -1200 -940 -129 -122 -279 -261 -333 -309 -111 -100 -146 -156 -154 -246 -7
       -74 23 -146 83 -199 50 -44 100 -61 195 -66 87 -5 132 -19 344 -112 94 -41

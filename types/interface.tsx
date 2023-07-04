@@ -3,3 +3,12 @@ export interface IInfiniteSlideProps {
   offset?: number,
   isEven?: boolean
 }
+
+export interface IScribbleProps {
+  fill: string, 
+  w?: string, 
+  h?: string, 
+  transform?: string,
+  animation?: string,
+  isAnimate?: boolean
+}

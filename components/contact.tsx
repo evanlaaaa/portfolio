@@ -35,28 +35,32 @@ export const Contact = () => {
   }, [contactOffset])
   
   return (
-    <Box pt='100px' pb='250px' w={["100%", "md", "md"]} display='flex' alignSelf='center' ref={boxRef}>
-      <SlideFade in={toShow} offsetX={ isMobile ? 0 : 80}>
-        <VStack w='full'>
-          <Flex w='full' alignItems="center">
-            <Center w='full'>
-              <Text w='auto' fontWeight="bold" fontSize="2xl" color='orange.300'>Contact Me</Text>
-            </Center>
-          </Flex>
-          <Flex w='100%' alignSelf="flex-end" wrap="wrap" direction="row" pt='5'>
-            <VStack pl={['0', '0', '10']} align="center" flex='1' spacing='10'>
-              <Text fontSize='md' color='gray.500' textAlign='center'>
-                {"Currently I\'m not looking for new opportunities to grow my career experience. But you can still contact me via email. I will do my best to get back to you as soon as possible."}
-              </Text>
-              <Link style={{ textDecoration: 'none' }} href='mailto:waichoon97@gmail.com'>
-                <Button colorScheme='orange' variant='outline'>
-                    Send Hi!
-                </Button>
-              </Link>
+    <Box h={'100vh'} w='full' ref={boxRef}>
+      <Box h='full' w='full' display='flex' justifyContent={'center'}>
+        <SlideFade in={toShow} offsetX={ isMobile ? 0 : 80} style={{width: '100%', height: '100%'}}>
+          <Center w='full' h='full'>
+            <VStack w={['md']} align={'center'}>
+              <Flex w='full' alignItems="center">
+                <Center w='full'>
+                  <Text w='auto' fontWeight="bold" fontSize="2xl" color='orange.300'>Contact Me</Text>
+                </Center>
+              </Flex>
+              <Flex w='100%' alignSelf="flex-end" wrap="wrap" direction="row" pt='5'>
+                <VStack pl={['0', '0', '0']} align="center" flex='1' spacing='10'>
+                  <Text fontSize='md' color='gray.500' textAlign='center'>
+                    {"Currently I\'m not looking for new opportunities to grow my career experience. But you can still contact me via email. I will do my best to get back to you as soon as possible."}
+                  </Text>
+                  <Link style={{ textDecoration: 'none' }} href='mailto:waichoon97@gmail.com'>
+                    <Button colorScheme='orange' variant='outline'>
+                        Send Hi!
+                    </Button>
+                  </Link>
+                </VStack>
+              </Flex>
             </VStack>
-          </Flex>
-        </VStack>
-      </SlideFade>
+          </Center>
+        </SlideFade>
+      </Box>
     </Box>
   );
 }

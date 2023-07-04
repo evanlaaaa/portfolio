@@ -1,6 +1,8 @@
-const ScribblesThree = ({fill, w, h, transform} : { fill: string, w?: string, h?: string, transform: string}) => {
+import { IScribbleProps } from "../../types/interface";
+
+const ScribblesThree = (props: IScribbleProps) => {
   return (
-    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 591.000000 646.000000" fill={fill} width={w} height={h} transform={transform}
+    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 591.000000 646.000000" fill={props.fill} width={props.w} height={props.h} transform={props.transform}
       preserveAspectRatio="xMidYMid meet">
 
     <g transform="translate(0.000000,666.000000) scale(0.100000,-0.100000)" stroke="none">

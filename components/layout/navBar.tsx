@@ -68,7 +68,7 @@ export const NavBar = () => {
   },[scroll])
 
   const onNavigatePressed = async (route: number) => {
-    window.scrollTo({top: route, left: 0, behavior: 'smooth'});
+    window.scrollTo({top: route + (route == 0 ? 0 : window.innerHeight/2), left: 0, behavior: 'smooth'});
   }
 
   return (

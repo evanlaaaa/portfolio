@@ -2,10 +2,22 @@ import { Box, Center, Divider, Heading, Link, SlideFade, Text, VStack } from "@c
 import { isMobile } from 'react-device-detect'
 import InfiniteSlide from "./infiniteSlide"
 import { Oswald, PT_Sans_Narrow, Roboto } from 'next/font/google'
+import localFont from 'next/font/local'
 
-const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '900'] })
-const oswald = Oswald({ subsets: ['latin'], weight: ['500', '400', '300'] })
-const pt = PT_Sans_Narrow({ subsets: ['latin'], weight: ['700', '400'] })
+// const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '900'] })
+// const oswald = Oswald({ subsets: ['latin'], weight: ['500', '400', '300'] })
+
+const roboto = localFont({
+  src: [
+    {
+      path: '../public/fonts/roboto/Roboto-Medium.ttf',
+      weight: '500',
+      style: 'normal'
+    }
+  ]
+})
+
+const oswald = localFont({ src: '../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
 
 export const PortfolioHeader = () => {
   return (

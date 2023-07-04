@@ -17,7 +17,12 @@ const Home: NextPage = () => {
       </Head>
       {/* <main style={{overflow: 'hidden'}}> */}
         <PortfolioHeader />
-        <Container maxW="container.lg" mt={["5", "10"]}>
+        <AboutMe />
+        <Experience />
+        <Showcase />
+        <Contact />
+        <Footer />
+        {/* <Container maxW="container.lg" mt={["5", "10"]}>
           <VStack align="flex-start">
             <AboutMe />
             <Experience />
@@ -25,7 +30,7 @@ const Home: NextPage = () => {
             <Contact />
             <Footer />
           </VStack>
-        </Container>
+        </Container> */}
       {/* </main> */}
     </div>
   )

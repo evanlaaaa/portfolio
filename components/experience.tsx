@@ -1,4 +1,4 @@
-import { Box, Link, Divider, VStack, Flex, Tab, TabList, TabPanel, TabPanels, Icon, Tabs, Text, HStack, SlideFade } from '@chakra-ui/react'
+import { Box, Link, Divider, VStack, Flex, Tab, TabList, TabPanel, TabPanels, Icon, Tabs, Text, HStack, SlideFade, Center } from '@chakra-ui/react'
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import { Job } from '../model/job';
@@ -86,81 +86,87 @@ export const Experience = () => {
   }, [experienceOffset])
 
   return (
-    <Box py='200px' w={["100%", "md", "container.md"]} display='flex' h='auto' ref={boxRef}>
-      <SlideFade in={toShow} offsetX={ isMobile ? 0 : -80}>
-        <VStack w='full'>
-          <Flex w='full' alignItems="center">
-            <Box pr='5'>
-              <Text w='auto' fontWeight="bold" fontSize="2xl" color='orange.300'>{"Where I\'ve worked"}</Text>
-            </Box>
-            <Box flex='1 0 auto'>
-              <Divider />
-            </Box>
-          </Flex>
-          <HStack pt='5' align="flex-start" w='full'>
-            <Tabs orientation='vertical' variant='unstyled'>
-              <TabList>
-                {
-                  experiences.map((job, index) => {
-                    return (
-                      <Tab 
-                        key={index}
-                        borderLeft='2px'
-                        borderColor='gray.100'
-                        _focus={{'boxShadow' : 'none'}}
-                        _selected={{'borderLeft': '2px', 'borderColor': 'orange.300'}}
-                      >
-                          {job.jobName}
-                      </Tab>
-                    );
-                  })
-                }
-              </TabList>
+    <Box h='100vh' w='full' ref={boxRef}>
+      <Box h='full' w='full' display='flex' justifyContent={'center'} >
+        <SlideFade in={toShow} offsetX={ isMobile ? 0 : -80} style={{width: '100%', height: '100%'}}>
+          <Center pt='calc(100vh / 3)'>
+            <Box w={['container.lg']} display='flex' justifyContent={'start'} py='auto'>
+              <VStack w='container.md'>
+                <Flex w='full' alignItems="center">
+                  <Box pr='5'>
+                    <Text w='auto' fontWeight="bold" fontSize="2xl" color='orange.300'>{"Where I\'ve worked"}</Text>
+                  </Box>
+                  <Box flex='1 0 auto'>
+                    <Divider />
+                  </Box>
+                </Flex>
+                <HStack pt='5' align="flex-start" w='full'>
+                  <Tabs orientation='vertical' variant='unstyled'>
+                    <TabList>
+                      {
+                        experiences.map((job, index) => {
+                          return (
+                            <Tab 
+                              key={index}
+                              borderLeft='2px'
+                              borderColor='gray.100'
+                              _focus={{'boxShadow' : 'none'}}
+                              _selected={{'borderLeft': '2px', 'borderColor': 'orange.300'}}
+                            >
+                                {job.jobName}
+                            </Tab>
+                          );
+                        })
+                      }
+                    </TabList>
 
-              <TabPanels pl='10'>
-                {
-                  experiences.map((job, index) => {
-                    return (
-                      <TabPanel key={index}>
-                        <Box>
-                          <Text color="gray.700" fontSize="xl" fontWeight='semibold'>
-                            {job.jobTitle + " @ "}
-                            {
-                              job.companyLink == ""
-                              ? job.jobCompany
-                              : <Link 
-                                  href="https://www.silkron.com/"
-                                  color="orange.300"
-                                >
-                                  {job.jobCompany}
-                                </Link>
-                            }
-                          </Text>
-                            <Text color="gray.500" fontSize='sm'>
-                              {job.dateRange}
-                            </Text>
-                            {
-                              job.description.map((description, index) => {
-                                return (
-                                  <HStack pt='2.5' alignItems="top" key={index}>
-                                    <Icon as={AiOutlineSwapRight} color='orange.500' mt='1' />
-                                    <Text color="gray.500">
-                                      {description}
-                                    </Text>
-                                  </HStack>
-                                );
-                              })
-                            }
-                        </Box>
-                      </TabPanel>
-                    );
-                  })
-                }
-              </TabPanels>
-            </Tabs>
-          </HStack>
-        </VStack>
-      </SlideFade>
+                    <TabPanels pl='10'>
+                      {
+                        experiences.map((job, index) => {
+                          return (
+                            <TabPanel key={index}>
+                              <Box>
+                                <Text color="gray.700" fontSize="xl" fontWeight='semibold'>
+                                  {job.jobTitle + " @ "}
+                                  {
+                                    job.companyLink == ""
+                                    ? job.jobCompany
+                                    : <Link 
+                                        href="https://www.silkron.com/"
+                                        color="orange.300"
+                                      >
+                                        {job.jobCompany}
+                                      </Link>
+                                  }
+                                </Text>
+                                  <Text color="gray.500" fontSize='sm'>
+                                    {job.dateRange}
+                                  </Text>
+                                  {
+                                    job.description.map((description, index) => {
+                                      return (
+                                        <HStack pt='2.5' alignItems="top" key={index}>
+                                          <Icon as={AiOutlineSwapRight} color='orange.500' mt='1' />
+                                          <Text color="gray.500">
+                                            {description}
+                                          </Text>
+                                        </HStack>
+                                      );
+                                    })
+                                  }
+                              </Box>
+                            </TabPanel>
+                          );
+                        })
+                      }
+                    </TabPanels>
+                  </Tabs>
+                </HStack>
+              </VStack>
+            </Box>
+          </Center>
+        </SlideFade>
+      </Box>
     </Box>
   );
 }
