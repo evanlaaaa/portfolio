@@ -71,19 +71,19 @@ const infiniteSlide = ({direction, offset = 0, isEven}: IInfiniteSlideProps) => 
             {
               isEven 
                 ? i % 3 === 0 ? (
-                  <ScribblesOne fill='#a36a5399' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
+                  <ScribblesOne fill='#68736B' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
                 ) : i % 3 === 1 ? (
-                  <ScribblesFour fill='#a36a5399' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
+                  <ScribblesFour fill='#68736B' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
                 ) : (
-                  <ScribblesTwo fill='#a36a5399' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
+                  <ScribblesTwo fill='#68736B' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
                 )
                 :
                   i % 3 === 0 ? (
-                    <ScribblesTwo fill='#a36a5399' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
+                    <ScribblesTwo fill='#68736B' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
                   ) : i % 3 === 1 ? (
-                    <ScribblesOne fill='#a36a5399' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
+                    <ScribblesOne fill='#68736B' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
                   ) : (
-                    <ScribblesFour fill='#a36a5399' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
+                    <ScribblesFour fill='#68736B' key={i} transform={`rotate(${(i % 3) * 15 - 15} 0 0)`}/>
                   )
             }
           </SlideItem>

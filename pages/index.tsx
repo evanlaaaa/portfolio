@@ -1,27 +1,24 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { PortfolioHeader } from '../components/portfolioHeader';
-import { Container, VStack } from '@chakra-ui/react';
-import { AboutMe } from '../components/about';
-import { Contact } from '../components/contact';
-import { Experience } from '../components/experience';
-import { Footer } from '../components/footer';
-import { Showcase } from '../components/showcase';
+import { PortfolioHeader } from '../components/pages/portfolioHeader';
+import { Box, Container, VStack } from '@chakra-ui/react';
+import { AboutMe } from '../components/pages/about';
+import { Experience } from '../components/pages/experience';
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <Box>
       <Head>
         <title>Wai Choon | Home</title>
         <link rel="icon" href="/portfolio/favicon.ico" />
       </Head>
-      {/* <main style={{overflow: 'hidden'}}> */}
-        <PortfolioHeader />
-        <AboutMe />
-        <Experience />
+      <PortfolioHeader />
+      <AboutMe />
+      <Experience />
+        {/* <Experience />
         <Showcase />
         <Contact />
-        <Footer />
+        <Footer /> */}
         {/* <Container maxW="container.lg" mt={["5", "10"]}>
           <VStack align="flex-start">
             <AboutMe />
@@ -32,7 +29,7 @@ const Home: NextPage = () => {
           </VStack>
         </Container> */}
       {/* </main> */}
-    </div>
+    </Box>
   )
 }
 

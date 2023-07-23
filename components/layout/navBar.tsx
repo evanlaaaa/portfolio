@@ -83,7 +83,8 @@ export const NavBar = () => {
         top="0" 
         left="0" 
         w="100%"
-        bg="white"
+        backdropFilter="auto" backdropBlur="lg"
+        bg="#0D1C26A6"
       >
         <Container maxW="container.lg" overflow={'auto'}>
           <HStack>

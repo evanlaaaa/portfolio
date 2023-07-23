@@ -51,7 +51,7 @@ const Index = ({children} : {children: any}) => {
       showcaseOffset, setShowcaseOffset,
       contactOffset, setContactOffset,
     }}>
-      {asPath != '/barter' && <NavBar />}
+      {/* {asPath != '/barter' && <NavBar />} */}
       {children}
     </NavigateContext.Provider>
   );

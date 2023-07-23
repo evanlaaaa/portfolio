@@ -2,11 +2,11 @@ import { Box, Text, Divider, Image, Center, Flex, VStack, List, ListItem, ListIc
 import "@fontsource/roboto-mono";
 import { useContext, useEffect, useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa";
-import { External } from "../model/external";
-import { Project } from "../model/project";
-import { ProjectCard } from "./projectCard";
+import { External } from "../../model/external";
+import { Project } from "../../model/project";
+import { ProjectCard } from "../projectCard";
 import { isMobile } from 'react-device-detect';
-import { NavigateContext } from "./layout";
+import { NavigateContext } from "../layout";
 
 export const Showcase = () => {
 
