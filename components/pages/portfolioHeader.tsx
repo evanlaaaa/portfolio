@@ -22,7 +22,7 @@ const varela = localFont({ src: '../../public/fonts/VarelaRound-Regular.ttf'})
 
 export const PortfolioHeader = () => {
   return (
-    <Box w='full' bg='linear-gradient(180deg, rgba(40,62,73,1) 0%, rgba(13,28,38,1) 100%);' height={'100vh'}>
+    <Box w='full' bg='linear-gradient(180deg, rgba(37, 70, 93,1) 0%, rgba(13,28,38,1) 100%);' height={'100vh'}>
       <Box h='64px' position='absolute'>
         <HStack h='full' className={roboto.className} px={10}>
           <HStack align={'baseline'} spacing={0}>

@@ -4,6 +4,7 @@ import { PortfolioHeader } from '../components/pages/portfolioHeader';
 import { Box, Container, VStack } from '@chakra-ui/react';
 import { AboutMe } from '../components/pages/about';
 import { Experience } from '../components/pages/experience';
+import { Showcase } from '../components/pages/showcase';
 
 const Home: NextPage = () => {
   return (
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
       <PortfolioHeader />
       <AboutMe />
       <Experience />
+      <Showcase />
         {/* <Experience />
         <Showcase />
         <Contact />

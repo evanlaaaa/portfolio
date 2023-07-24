@@ -1,8 +1,9 @@
-export interface Job {
-  jobName: string;
-  jobTitle: string;
-  jobCompany: string;
-  companyLink: string;
+export interface IJob {
+  companyName: string;
+  companyLink?: string;
+  companyAddress: string;
+  positionTitle: string;
   dateRange: string;
   description: Array<string>;
+  technologies: Array<string>
 }
