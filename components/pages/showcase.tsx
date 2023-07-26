@@ -87,7 +87,7 @@ export const Showcase = () => {
   }, [showcaseOffset])
 
   return (
-    <Box w='full' ref={boxRef}>
+    <Box w='full' ref={boxRef} bg='primary.900'>
       <Box h='full' w='full' display='flex' justifyContent={'center'}>
         <SlideFade in={toShow} offsetX={ isMobile ? 0 : 80} style={{'width': '100%'}}>
           <Center pt='calc(100vh / 3)'>

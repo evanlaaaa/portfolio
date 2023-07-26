@@ -81,7 +81,7 @@ export const AboutMe = () => {
   }, [aboutOffset])
 
   return (
-    <Box h={['calc(100vh + 100px)', '100vh']} w='full' ref={boxRef} bg='#0d1c26' style={{
+    <Box h={['calc(100vh + 100px)', '100vh']} w='full' ref={boxRef} bg='primary.900' style={{
       backgroundImage: `
         url("/portfolio/images/background/about_bg.png"),
         url("/portfolio/images/background/about_bg2.png"),
@@ -109,7 +109,7 @@ export const AboutMe = () => {
                     <ScribblesNine fill="#ffcaaa8a" transform={`rotate(${isRotate ? 15 : 45}) scale(-1, 1)`} />
                   </Box>
                   <Box pr='5'>
-                    <Text w='auto' fontWeight="bold" fontSize="2xl" color='#D9895B' className={oswald.className}>About Me</Text>
+                    <Text w='auto' fontWeight="bold" fontSize="2xl" color='secondary.300' className={oswald.className}>About Me</Text>
                   </Box>
                   <Box flex='1 0 auto'>
                     <Divider />
@@ -126,27 +126,27 @@ export const AboutMe = () => {
                     />
                   </Center>
                   <VStack pl={['0', '0', '10']} align="flex-start" flex='1' spacing={2.5}>
-                    <Text fontSize='md' color='#687A6E' className={roboto.className} textAlign={['center', 'left']}>
+                    <Text fontSize='md' color='label.400' className={roboto.className} textAlign={['center', 'left']}>
                       Hello! My name is Wai Choon, also known as Evan, and I am passionate about programming. I thrive on pushing the boundaries of my comfort zone and actively seek out new learning opportunities. In my free time, I utilize programming to enhance my everyday life by automating tasks and streamlining processes. I find great satisfaction in using my programming skills to improve my own efficiency and productivity.
                     </Text>
-                    <Text fontSize='md' color='#687A6E' className={roboto.className} textAlign={['center', 'left']}>
+                    <Text fontSize='md' color='label.400' className={roboto.className} textAlign={['center', 'left']}>
                       Furthermore, I am dedicated to contributing to the communities I am a part of. I enjoy sharing my expertise and providing quality-of-life scripts to enhance the overall experience for everyone involved.
                     </Text>
-                    <Text fontSize='md' color='#687A6E' className={roboto.className} textAlign={['center', 'left']}>
+                    <Text fontSize='md' color='label.400' className={roboto.className} textAlign={['center', 'left']}>
                       Here are some technologies I’ve been using recently:
                     </Text>
                     <HStack w='full' justify={['center', 'left']}>
                       <Box pr='10'>
                         <List spacing={3}>
-                          <ListItem color='#687A6E' className={roboto.className} fontWeight={500}>
+                          <ListItem color='label.400' className={roboto.className} fontWeight={500}>
                             <ListIcon as={FaReact} color='teal.300' />
                             <Box onClick={() => alert("Yes there is no secret")} display={'inline'}>React</Box>
                           </ListItem>
-                          <ListItem color='#687A6E' className={roboto.className} fontWeight={500}>
+                          <ListItem color='label.400' className={roboto.className} fontWeight={500}>
                             <ListIcon as={RiFlutterFill} color='teal.300' />
                             Flutter
                           </ListItem>
-                          <ListItem color='#687A6E' className={roboto.className} fontWeight={500}>
+                          <ListItem color='label.400' className={roboto.className} fontWeight={500}>
                             <ListIcon as={FaPython} color='teal.300' />
                             Python
                           </ListItem>
@@ -154,15 +154,15 @@ export const AboutMe = () => {
                       </Box>
                       <Box>
                         <List spacing={3}>
-                          <ListItem color='#687A6E' className={roboto.className} fontWeight={500}>
+                          <ListItem color='label.400' className={roboto.className} fontWeight={500}>
                             <ListIcon as={FaPhp} color='teal.300' />
                             PHP
                           </ListItem>
-                          <ListItem color='#687A6E' className={roboto.className} fontWeight={500}>
+                          <ListItem color='label.400' className={roboto.className} fontWeight={500}>
                             <ListIcon as={SiTypescript} color='teal.300' />
                             TypeScript
                           </ListItem>
-                          <ListItem color='#687A6E' className={roboto.className} fontWeight={500}>
+                          <ListItem color='label.400' className={roboto.className} fontWeight={500}>
                             <ListIcon as={FaSwift} color='teal.300' />
                             Swift
                           </ListItem>

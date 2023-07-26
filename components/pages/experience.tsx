@@ -172,7 +172,7 @@ export const Experience = () => {
   }, [experienceOffset])
 
   return (
-    <Box minH='100vh' w='full' bg='#0d1c26' ref={boxRef}>
+    <Box minH='100vh' w='full' bg='primary.900' ref={boxRef}>
       <Box h='full' w='full' display='flex' justifyContent={'center'} >
         <SlideFade in={toShow} offsetX={ isMobile ? 0 : -80} style={{width: '100%', height: '100%'}}>
           <Center pt='calc(100vh / 3)'>
@@ -180,7 +180,7 @@ export const Experience = () => {
               <VStack w='container.md'>
                 <Flex w='full' alignItems="center">
                   <Box pr='5'>
-                    <Text w='auto' fontWeight="bold" fontSize="2xl" color='#D9895B' className={oswald.className}>{"Where I\'ve worked"}</Text>
+                    <Text w='auto' fontWeight="bold" fontSize="2xl" color='secondary.300' className={oswald.className}>{"Where I\'ve worked"}</Text>
                   </Box>
                   <Box flex='1 0 auto'>
                     <Divider />
@@ -192,7 +192,7 @@ export const Experience = () => {
                       return (
                         // <ExperienceCard job={job} />
                           <AccordionItem border='none' my={3}>
-                            <AccordionButton bgColor='#578491' py={3} px={5} borderRadius={'md'} className={roboto.className} _hover={{
+                            <AccordionButton bgColor='forest.500' py={3} px={5} borderRadius={'md'} className={roboto.className} _hover={{
                               bgColor: 'none'
                             }}>
                               <HStack w='full' borderRadius={'xl'} className={roboto.className}>
@@ -206,18 +206,18 @@ export const Experience = () => {
                                 <AccordionIcon />
                               </HStack>
                             </AccordionButton>
-                            <AccordionPanel my={2} bg='#192b33' borderRadius={'md'}>
+                            <AccordionPanel my={2} bg='forest.900' borderRadius={'md'}>
                               <HStack py={2}>
                                 <HStack>
-                                  <Icon as={FaMapMarkerAlt} color='#709faa' />
-                                  <Text color='#687A6EBD' className={roboto.className}>
+                                  <Icon as={FaMapMarkerAlt} color='forest.400' />
+                                  <Text color='label.600' className={roboto.className}>
                                     {job.companyAddress}
                                   </Text>
                                   <Spacer />
                                   {job.companyLink &&
                                     <>
-                                      <Icon as={FaLink} color='#709faa' />
-                                      <Link color='#687A6EBD' className={roboto.className}>
+                                      <Icon as={FaLink} color='forest.400' />
+                                      <Link color='label.600' className={roboto.className}>
                                         {job.companyLink!}
                                       </Link>
                                     </>
@@ -229,13 +229,13 @@ export const Experience = () => {
                                   job.technologies.map((tech, i) => {
                                     return (
                                       <Box
-                                        bg='#426571'
+                                        bg='forest.700'
                                         key={i}
                                         borderRadius='full'
                                         px={3}
                                         py={0.5}
                                       >
-                                        <Text className={roboto.className} fontSize={14}>{tech}</Text>
+                                        <Text color='label.200' className={roboto.className} fontSize={14}>{tech}</Text>
                                       </Box>
                                     )
                                   })
@@ -246,8 +246,8 @@ export const Experience = () => {
                                   job.description.map((description, index) => {
                                     return (
                                       <HStack pt='2.5' alignItems="top" key={index}>
-                                        <Icon as={AiOutlineSwapRight} color="#D9895B" mt='1' />
-                                        <Text color='#687A6E' className={roboto.className}>
+                                        <Icon as={AiOutlineSwapRight} color="secondary.500" mt='1' />
+                                        <Text color='label.400' className={roboto.className}>
                                           {description}
                                         </Text>
                                       </HStack>

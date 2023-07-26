@@ -22,7 +22,7 @@ const varela = localFont({ src: '../../public/fonts/VarelaRound-Regular.ttf'})
 
 export const PortfolioHeader = () => {
   return (
-    <Box w='full' bg='linear-gradient(180deg, rgba(37, 70, 93,1) 0%, rgba(13,28,38,1) 100%);' height={'100vh'}>
+    <Box w='full' bgGradient='linear(to-b, primary.700, primary.900)' height={'100vh'}>
       <Box h='64px' position='absolute'>
         <HStack h='full' className={roboto.className} px={10}>
           <HStack align={'baseline'} spacing={0}>
@@ -53,18 +53,18 @@ export const PortfolioHeader = () => {
           <Center>
             <VStack w={['full', 'xl']}>
               <Box textAlign={'center'}>
-                <Text color="#D9895B" fontSize="6xl" className={oswald.className} fontWeight={300}>HELLO, I'M</Text>
-                <Text color="#F2A663" fontSize="6xl" className={oswald.className} fontWeight={500}>CHONG WAI CHOON</Text>
+                <Text color="secondary.200" fontSize="6xl" className={oswald.className} fontWeight={300}>HELLO, I'M</Text>
+                <Text color="secondary.300" fontSize="6xl" className={oswald.className} fontWeight={500}>CHONG WAI CHOON</Text>
               </Box>
               <Box px={20} w='full'>
                 <Divider borderColor='#8C644D' />
               </Box>
-              <HStack textAlign={'center'} className={oswald.className} fontWeight={500} pt={5} color="#D9895B" fontSize='lg'>
-                <Text color="#ECB165">Software Engineer</Text>
-                <Text color="#D9895B">&nbsp; | &nbsp;</Text>
-                <Text color="#ECB165">Mobile App Developer</Text>
-                <Text color="#D9895B">&nbsp; | &nbsp;</Text>
-                <Text color="#ECB165">Web Developer</Text>
+              <HStack textAlign={'center'} className={oswald.className} fontWeight={500} pt={5} color="secondary.400" fontSize='lg'>
+                <Text color="secondary.200">Software Engineer</Text>
+                <Text color="secondary.400">&nbsp; | &nbsp;</Text>
+                <Text color="secondary.200">Mobile App Developer</Text>
+                <Text color="secondary.400">&nbsp; | &nbsp;</Text>
+                <Text color="secondary.200">Web Developer</Text>
               </HStack>
             </VStack>
           </Center>
