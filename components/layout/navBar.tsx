@@ -1,113 +1,114 @@
-import { Box, Button, Container, HStack, Image, Slide, useDisclosure } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { useCallback, useEffect, useState, useContext } from "react";
-import { isMobile } from 'react-device-detect';
-import Link from "../link";
+import { Slide } from "@chakra-ui/react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { NavigateContext } from ".";
+import localFont from "next/font/local";
+import NavigationBar from "../navigationBar";
+import { INavigationLayoutProps, IRoute } from "../../types/interface";
+import { useRouter } from "next/router";
 
-export const NavBar = () => {
-  const router = useRouter();
-  let { asPath } = router;
-    
-  let y = 0;
-  const [isTop, setIsTop] = useState(true);
-  const [isUp, setIsUp] = useState(true);
+export const NavigationBarLayout = ({isStatic = false, isOutOfMainPage = false}: INavigationLayoutProps) => {
+  const [isUp, setIsUp] = useState(false);
 
-  const [isHeaderActive, setIsHeaderActive] = useState(true);
+  const [isHeaderActive, setIsHeaderActive] = useState(!isOutOfMainPage);
   const [isAboutActive, setIsAboutActive] = useState(false);
   const [isExperienceActive, setIsExperienceActive] = useState(false);
   const [isShowcaseActive, setIsShowcaseActive] = useState(false);
   const [isContactActive, setIsContactActive] = useState(false);
 
-  const { aboutOffset, experienceOffset, showcaseOffset, contactOffset } = useContext(NavigateContext);
+  const { aboutRef, experienceRef, showcaseRef, contactRef } = useContext(NavigateContext);
 
-  const route = [
+  const router = useRouter()
+
+  const route: IRoute[] = [
     {
       name: "Home",
       isActive: isHeaderActive,
-      y: 0
     },
     {
       name: "About Me",
       isActive: isAboutActive,
-      y: aboutOffset
     },
     {
       name: "Experience",
       isActive: isExperienceActive,
-      y: experienceOffset
     },
     {
       name: "Showcase",
       isActive: isShowcaseActive,
-      y: showcaseOffset
     },
     {
       name: "Contact",
       isActive: isContactActive,
-      y: contactOffset
     }
   ]
 
   const scroll = useCallback(() => {
-    setIsTop(window.scrollY == 0);
-    setIsUp(window.scrollY > y ? false : true);
+    if (
+      aboutRef == null || experienceRef  == null || showcaseRef  == null || contactRef  == null ||
+      aboutRef.current == null || experienceRef.current == null || showcaseRef.current == null || contactRef.current == null ||
+      isOutOfMainPage
+    ) return
 
-    setIsHeaderActive(window.scrollY >= 0 && window.scrollY <= aboutOffset);
-    setIsAboutActive(window.scrollY > aboutOffset && window.scrollY <= experienceOffset);
-    setIsExperienceActive(window.scrollY > experienceOffset && window.scrollY <= showcaseOffset);
-    setIsShowcaseActive(window.scrollY > showcaseOffset && window.scrollY <= contactOffset);
-    setIsContactActive(window.scrollY > contactOffset);
+    setIsHeaderActive(window.scrollY <= aboutRef!.current!.offsetTop - 300);
+    setIsAboutActive(window.scrollY > aboutRef!.current!.offsetTop - 300 && window.scrollY <= experienceRef!.current!.offsetTop - 300);
+    setIsExperienceActive(window.scrollY > experienceRef!.current!.offsetTop - 300 && window.scrollY <= showcaseRef!.current!.offsetTop - 300);
+    setIsShowcaseActive(window.scrollY > showcaseRef!.current!.offsetTop - 300 && window.scrollY <= contactRef!.current!.offsetTop - 300);
+    setIsContactActive(window.scrollY > contactRef!.current!.offsetTop - 300);
 
-    y = window.scrollY;
-  }, [aboutOffset, experienceOffset, showcaseOffset, contactOffset]);
+    if (!isStatic && window.scrollY < 500) {
+      setIsUp(false)
+    }
+    else if (!isStatic && window.scrollY > 500) {
+      setIsUp(true)
+    }
+    
+  }, []);
 
   useEffect(() => {
+    if(isOutOfMainPage) return
     window.addEventListener("scroll", scroll);
     return () => window.removeEventListener("scroll", scroll);
   },[scroll])
 
-  const onNavigatePressed = async (route: number) => {
-    window.scrollTo({top: route + (route == 0 ? 0 : window.innerHeight/2), left: 0, behavior: 'smooth'});
+  useEffect(() => {
+    // trigger fade transition if refresh
+    window.scrollTo({top: window.scrollY + 1})
+    window.scrollTo({top: window.scrollY - 1})
+  },[])
+
+  const onNavigatePressed = async (route: string) => {
+    if (isOutOfMainPage) {
+      router.push('/', undefined, { shallow: true })
+    }
+    else {
+      let top = 0
+      switch(route) {
+        case 'About Me': top = aboutRef!.current!.offsetTop; break;
+        case 'Experience': top = experienceRef!.current!.offsetTop; break;
+        case 'Showcase': top = showcaseRef!.current!.offsetTop; break;
+        case 'Contact': top = contactRef!.current!.offsetTop; break;
+      }
+      window.scrollTo({top: top, left: 0, behavior: 'smooth'});
+    }
   }
 
   return (
+    isStatic
+    ? <NavigationBar
+        isStatic
+        route={route}
+        handleNavigation={onNavigatePressed}
+      />
+    :
     <Slide
       direction="top"
       in={isUp}
       style={{ zIndex: 10 }}
     >
-      <Box 
-        py="3" 
-        boxShadow={isUp ? isTop ? "none" : "md" : "none"} 
-        top="0" 
-        left="0" 
-        w="100%"
-        backdropFilter="auto" backdropBlur="lg"
-        bg="#0D1C26A6"
-      >
-        <Container maxW="container.lg" overflow={'auto'}>
-          <HStack>
-            {
-              route.map((r, index) => {
-                return (
-                  <Link
-                    key={index}
-                    p={2}
-                    rounded={"md"}
-                    currentpath={asPath}
-                    isActive={r.isActive}
-                    onClick={() => onNavigatePressed(r.y)}
-                    whiteSpace='nowrap'
-                  >
-                    {r.name}
-                  </Link>
-                );
-              })
-            }
-          </HStack>
-        </Container>
-      </Box>
+      <NavigationBar
+        route={route}
+        handleNavigation={onNavigatePressed}
+      />
     </Slide>
   );
 }

@@ -5,32 +5,22 @@ import { Box, Container, VStack } from '@chakra-ui/react';
 import { AboutMe } from '../components/pages/about';
 import { Experience } from '../components/pages/experience';
 import { Showcase } from '../components/pages/showcase';
+import { Footer } from '../components/pages/footer';
+import { Contact } from '../components/pages/contact';
 
 const Home: NextPage = () => {
   return (
-    <Box>
+    <Box overflowX='hidden'>
       <Head>
         <title>Wai Choon | Home</title>
-        <link rel="icon" href="/portfolio/favicon.ico" />
+        <link rel="icon" href="/images/favicon.ico" />
       </Head>
       <PortfolioHeader />
       <AboutMe />
       <Experience />
       <Showcase />
-        {/* <Experience />
-        <Showcase />
-        <Contact />
-        <Footer /> */}
-        {/* <Container maxW="container.lg" mt={["5", "10"]}>
-          <VStack align="flex-start">
-            <AboutMe />
-            <Experience />
-            <Showcase />
-            <Contact />
-            <Footer />
-          </VStack>
-        </Container> */}
-      {/* </main> */}
+      <Contact />
+      <Footer />
     </Box>
   )
 }

@@ -1,43 +1,15 @@
-import { Box, Center, Divider, HStack, Heading, Link, SlideFade, Text, VStack } from "@chakra-ui/react"
-import { isMobile } from 'react-device-detect'
+import { Box, Center, Divider, HStack, Text, VStack } from "@chakra-ui/react"
 import InfiniteSlide from "../infiniteSlide"
 import localFont from 'next/font/local'
-
-// const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '900'] })
-// const oswald = Oswald({ subsets: ['latin'], weight: ['500', '400', '300'] })
-
-const roboto = localFont({
-  src: [
-    {
-      path: '../../public/fonts/roboto/Roboto-Medium.ttf',
-      weight: '500',
-      style: 'normal'
-    }
-  ]
-})
+import { NavigationBarLayout } from "../layout/navBar"
 
 const oswald = localFont({ src: '../../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
-
-const varela = localFont({ src: '../../public/fonts/VarelaRound-Regular.ttf'})
 
 export const PortfolioHeader = () => {
   return (
     <Box w='full' bgGradient='linear(to-b, primary.700, primary.900)' height={'100vh'}>
-      <Box h='64px' position='absolute'>
-        <HStack h='full' className={roboto.className} px={10}>
-          <HStack align={'baseline'} spacing={0}>
-            <Text fontSize='3xl' color='teal.200'>
-              Evan
-            </Text>
-            <Text mx={1} fontSize='4xl' color='#F2F0EB'>
-            .
-            </Text>
-            <Text fontSize='3xl' color='#1A2E37'>
-            La
-            </Text>
-            <Box mb={"-10px"} mx={1} h='3px' w='17px' bgColor='purple.300' borderRadius={'full'} transform={'translatey(2px)'}/>
-          </HStack>
-        </HStack>
+      <Box h='64px' position='absolute' w='full' zIndex={10}>
+        <NavigationBarLayout isStatic />
       </Box>
       <div style={{width: '100%', position:'relative', overflow: 'hidden', height: '100vh'}}>
         <VStack spacing={'80px'} w='full' h='full' position='absolute' justifyContent={'center'}>
