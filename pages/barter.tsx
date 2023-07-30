@@ -183,7 +183,7 @@ const Barter: NextPage = () => {
                         <Image
                           alt={t4}
                           boxSize='40px'
-                          src={'portfolio/bdo/' + t4 + '.png'}
+                          src={'/portfolio/images/bdo/' + t4 + '.png'}
                         />
                       </Box>
                     )
@@ -254,7 +254,7 @@ const Barter: NextPage = () => {
                         <Image
                           alt={t4}
                           boxSize='40px'
-                          src={'portfolio/bdo/' + t4 + '.png'}
+                          src={'/portfolio/images/bdo/' + t4 + '.png'}
                         />
                       </HStack>
                     )
