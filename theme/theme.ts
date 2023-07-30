@@ -1,18 +1,56 @@
 import { extendTheme } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
 
-const config = {
-  useSystemColorMode: true,
-};
-
-const styles = {
-  global: (props: any) => ({
-    body: {
-      bg: mode("gray.50", "#151a23")(props),
+const theme = extendTheme({
+  colors: {
+    primary: {
+      50: '#e5ebf2',
+      100: '#c1ced8',
+      200: '#9dadba',
+      300: '#788e9e',
+      400: '#5e7789',
+      500: '#446175',
+      600: '#385366',
+      700: '#2b4151',
+      800: '#1d2f3c',
+      900: '#0d1c26'
     },
-  }),
-};
-
-const theme = extendTheme({ ...config, styles });
+    secondary: {
+      50: '#fff3da',
+      100: '#ffdcae',
+      200: '#ffc77d',
+      300: '#ffb14b',
+      400: '#ff9a1a',
+      500: '#e68100',
+      600: '#b36400',
+      700: '#814800',
+      800: '#4f2a00',
+      900: '#1f0c00',
+    },
+    label: {
+      50: '#e7f6ef',
+      100: '#d1ddd4',
+      200: '#b7c6bc',
+      300: '#9caea2',
+      400: '#829788',
+      500: '#687d6f',
+      600: '#506255',
+      700: '#38473d',
+      800: '#202b23',
+      900: '#041104',
+    },
+    forest: {
+      50: '#e5eff3',
+      100: '#c5d6db',
+      200: '#a4b9c1',
+      300: '#819da7',
+      400: '#678894',
+      500: '#4d7481',
+      600: '#426571',
+      700: '#34525c',
+      800: '#273f47',
+      900: '#172a31',
+    }
+  }
+});
 
 export default theme;

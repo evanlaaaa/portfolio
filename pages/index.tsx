@@ -1,34 +1,27 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { PortfolioHeader } from '../components/portfolioHeader';
-import { AboutMe } from '../components/about';
-import { Experience } from '../components/experience';
-import { Container, VStack } from '@chakra-ui/react';
-import { Showcase } from '../components/showcase';
-import { Footer } from '../components/footer';
-import { Contact } from '../components/contact';
+import { PortfolioHeader } from '../components/pages/portfolioHeader';
+import { Box, Container, VStack } from '@chakra-ui/react';
+import { AboutMe } from '../components/pages/about';
+import { Experience } from '../components/pages/experience';
+import { Showcase } from '../components/pages/showcase';
+import { Footer } from '../components/pages/footer';
+import { Contact } from '../components/pages/contact';
 
 const Home: NextPage = () => {
-
   return (
-    <div>
+    <Box overflowX='hidden'>
       <Head>
         <title>Wai Choon | Home</title>
-        <link rel="icon" href="/portfolio/favicon.ico" />
+        <link rel="icon" href="/images/favicon.ico" />
       </Head>
-      <main>
-        <PortfolioHeader />
-        <Container height="100vh" maxW="container.lg" mt={["5", "10"]}>
-          <VStack align="flex-start">
-            <AboutMe />
-            <Experience />
-            <Showcase />
-            <Contact />
-            <Footer />
-          </VStack>
-        </Container>
-      </main>
-    </div>
+      <PortfolioHeader />
+      <AboutMe />
+      <Experience />
+      <Showcase />
+      <Contact />
+      <Footer />
+    </Box>
   )
 }
 

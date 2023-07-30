@@ -1,36 +1,23 @@
-import { Dispatch, SetStateAction, createContext, useState } from "react";
-import { NavBar } from "./navBar";
+import { RefObject, SetStateAction, createContext, useEffect, useState } from "react";
+import { NavigationBarLayout } from "./navBar";
 import { useRouter } from 'next/router';
-
-type NavigateContextType = {
-  aboutOffset: number,
-  setAboutOffset: Dispatch<SetStateAction<number>>,
-  
-  experienceOffset: number,
-  setExperienceOffset: Dispatch<SetStateAction<number>>,
-
-  showcaseOffset: number,
-  setShowcaseOffset: Dispatch<SetStateAction<number>>,
-
-  contactOffset: number,
-  setContactOffset: Dispatch<SetStateAction<number>>,
-}
+import { NavigateContextType } from "../../types/interface";
 
 export const NavigateContext = createContext<NavigateContextType>({
-  aboutOffset: 0,
-  setAboutOffset: function (value: SetStateAction<number>): void {
+  aboutRef: null,
+  setAboutRef: function (value: SetStateAction<RefObject<HTMLDivElement> | null>): void {
     throw new Error("Function not implemented.");
   },
-  experienceOffset: 0,
-  setExperienceOffset: function (value: SetStateAction<number>): void {
+  experienceRef: null,
+  setExperienceRef: function (value: SetStateAction<RefObject<HTMLDivElement> | null>): void {
     throw new Error("Function not implemented.");
   },
-  showcaseOffset: 0,
-  setShowcaseOffset: function (value: SetStateAction<number>): void {
+  showcaseRef: null,
+  setShowcaseRef: function (value: SetStateAction<RefObject<HTMLDivElement> | null>): void {
     throw new Error("Function not implemented.");
   },
-  contactOffset: 0,
-  setContactOffset: function (value: SetStateAction<number>): void {
+  contactRef: null,
+  setContactRef: function (value: SetStateAction<RefObject<HTMLDivElement> | null>): void {
     throw new Error("Function not implemented.");
   }
 });
@@ -39,19 +26,29 @@ const Index = ({children} : {children: any}) => {
   const router = useRouter();
   let { asPath } = router;
 
-  const [aboutOffset, setAboutOffset] = useState(0);
-  const [experienceOffset, setExperienceOffset] = useState(0);
-  const [showcaseOffset, setShowcaseOffset] = useState(0);
-  const [contactOffset, setContactOffset] = useState(0);
+  const [showNavigationBar, setShowNavigationBar] = useState(false)
+  useEffect(() => {
+    if (asPath != '/barter' && !asPath.includes('/project')) {
+      setShowNavigationBar(true)
+    }
+    else {
+      setShowNavigationBar(false)
+    }
+  }, [asPath])
+
+  const [aboutRef, setAboutRef] = useState<RefObject<HTMLDivElement> | null>(null)
+  const [experienceRef, setExperienceRef] = useState<RefObject<HTMLDivElement> | null>(null)
+  const [showcaseRef, setShowcaseRef] = useState<RefObject<HTMLDivElement> | null>(null)
+  const [contactRef, setContactRef] = useState<RefObject<HTMLDivElement> | null>(null)
 
   return (
     <NavigateContext.Provider value={{
-      aboutOffset, setAboutOffset,
-      experienceOffset, setExperienceOffset ,
-      showcaseOffset, setShowcaseOffset,
-      contactOffset, setContactOffset,
+      aboutRef, setAboutRef,
+      experienceRef, setExperienceRef ,
+      showcaseRef, setShowcaseRef,
+      contactRef, setContactRef,
     }}>
-      {asPath != '/barter' && <NavBar />}
+      {showNavigationBar && <NavigationBarLayout />}
       {children}
     </NavigateContext.Provider>
   );

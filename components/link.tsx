@@ -4,12 +4,14 @@ import { Box, Link as ChakraLink, useColorModeValue } from "@chakra-ui/react";
 const Link: React.FC<any> = ({children, isActive, ...props}) => {
   return (
     <Box
-      bg={isActive ? "gray.100": "none"} {...props}
+      {...props}
+      color={isActive ? 'label.50': props.color}
       _hover={{
         textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.300"),
+        color: 'label.100',
         cursor: "pointer"
       }}
+      transition={'color ease 0.4s'}
     >
       {children}
     </Box>

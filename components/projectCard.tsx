@@ -1,137 +1,104 @@
-import { Box, Center, Flex, VStack, Image, Text, Spacer, HStack, IconButton, Wrap, WrapItem } from "@chakra-ui/react";
-import { Project } from "../model/project";
-import ImageViewer from 'react-simple-image-viewer';
+import { Box, Flex, VStack, Image, Text, HStack, GridItem, Icon } from "@chakra-ui/react";
 
 // @ts-ignore
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import localFont from "next/font/local";
+import { IProject } from "../types/interface";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { useRouter } from "next/router";
 
-export const ProjectCard = ({project, flip, ...pros}: {project: Project, flip: boolean}) => {
+const roboto = localFont({
+  src: [
+    {
+      path: '../public/fonts/roboto/Roboto-Medium.ttf',
+      weight: '500',
+      style: 'normal'
+    }
+  ]
+})
+
+export const ProjectCard = ({project, ...pros}: {project: IProject}) => {
+  const router = useRouter();
   const marginOverlapSize = "-20px";
 
   const [isOpen, setIsOpen] = useState(false);
   const [currImageIndex, setCurrImageIndex] = useState(0);
+  const [isImageZoom, setIsImageZoom] = useState(false)
 
   const onImageOpen = (e: any, i: number) : void => {
     setIsOpen(true);
     setCurrImageIndex(i);
   }
 
+  const handleClick = (e: any) => {
+    router.push(`/project/${project.id}`, undefined, { shallow: true})
+  }
+
   const onImageClose = () : void => {
     setIsOpen(false);
   }
 
-  const onClickNext = () : void => {
-    setCurrImageIndex(currImageIndex + 1)
+  const handleMouseEnter = () => {
+    setIsImageZoom(true)
   }
 
-  const onClickPrev = () : void => {
-    setCurrImageIndex(currImageIndex - 1)
+  const handleMouseLeave = () => {
+    setIsImageZoom(false)
   }
 
   return (
-    <Flex w='full' alignSelf="flex-end" wrap="wrap" direction="row" py='50'>
-      <Center display={['inline', 'inline', flip ? 'inline' : 'none']}>
-        <Image
-          borderRadius={'md'}
-          width={500}
-          height={350}
-          src={'/portfolio' + project.imageUrl}
-          alt={project.projectName}
-        />
-      </Center>
-      <Box my={5} flex='1'>
-        <VStack ml={["0", "0", flip ? marginOverlapSize : "0"]} align={["flex-start", "flex-start", flip ? "flex-end" : "flex-start"]} flex='1' h='full'>
-          <Text color="gray.700" fontSize="2xl" pb="2.5" fontWeight="semibold">{project.projectName}</Text>
-            <Box bg='orange.400' w='full' p='4' textAlign={["left", "left", flip ? "right" : "left"]} borderRadius='md' boxShadow='md'>
-              <Text fontSize='md' color='gray.100'>
-                {project.projectDescription}
-              </Text>
-            </Box>
-          <Spacer />
-          {
-            project.gallery &&
-            <Flex flexWrap='wrap' justifyContent="flex-end">
+    <GridItem w='100%' borderRadius='md' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} _hover={{ cursor: 'pointer' }}>
+      <VStack align='stretch' spacing={0} h='full' borderRadius='md'>
+        <Box overflow='hidden' position='relative' borderTopRadius='md'>
+          <Box zIndex={1} position='absolute' h='full' w='full' bg='black' opacity={isImageZoom ? 0.4 : 0} transition={'opacity 0.5s ease'} />
+          <Image
+            transform={`scale3d(${isImageZoom ? '1.1' : '1.0'},${isImageZoom ? '1.1' : '1.0'},1)`}
+            transition='all ease 0.5s'
+            w='full'
+            h='228px'
+            borderTopRadius='md'
+            src={project.imageUrl}
+            alt={project.projectName}
+            objectFit='cover'
+          />
+          
+        </Box>
+        <Box py={5} px={8} bg='forest.900' flex={1} borderBottomRadius='md'>
+          <VStack alignItems='start'>
+            <Text color='label.200' fontSize='lg' className={roboto.className}>{project.projectName}</Text>
+            <Flex flexWrap={'wrap'} gap={2.5} py={4}>
               {
-                project.gallery?.map((url, index) => {
+                project.technologies.map((tech, i) => {
                   return (
                     <Box
-                      key={index}
-                      p='2'
-                      m='2'
-                      border='1px' 
-                      borderColor='gray.200'
-                      cursor='pointer'
+                      bg='forest.700'
+                      key={i}
+                      borderRadius='full'
+                      px={3}
+                      py={0.5}
                     >
-                      <Center>
-                        <a
-                          key={index}
-                          onClick={(e) => onImageOpen(e, index)}
-                        >
-                          <Image 
-                            key={index}
-                            alt={url}
-                            src={'/portfolio' + url} 
-                            objectFit='cover'
-                            boxSize='50px'
-                          />
-                        </a>
-                      </Center>
+                      <Text color='label.200' className={roboto.className} fontSize={14}>{tech}</Text>
                     </Box>
                   )
                 })
               }
-              {isOpen &&
-                <ImageViewer
-                  src={ project.gallery.map((v) => `/portfolio/${v}`) }
-                  currentIndex={ currImageIndex }
-                  disableScroll={ false }
-                  closeOnClickOutside={ true }
-                  onClose={ onImageClose }
-                />
-              }
             </Flex>
-          }
-          <Wrap py='5'>
-            {
-              project.technologies.map((tech, index) => {
-                return (
-                  <WrapItem bg='orange.100' p='1.5' borderRadius='md' key={index}>
-                    <Text fontSize='xs' color='gray.500' fontFamily="Roboto Mono" whiteSpace='nowrap' overflow='hidden'>
-                      {tech}
-                    </Text>
-                  </WrapItem> 
-                );
-              })
+            {project.external &&
+              <HStack justifyContent='end' w='full'>
+                {
+                  project.external.map((ext, index) => {
+                    return (
+                      ext.isGithub
+                        ? <Icon key={index} as={FaGithub} boxSize={25} color='label.100'/>
+                        : <Icon key={index} as={FaExternalLinkAlt} size={25} color='label.100'/>
+                    )
+                  })
+                }
+              </HStack>
             }
-          </Wrap>
-          {
-            project.external &&
-            <HStack>
-              {
-                project.external.map((ext, index) => {
-                  return (
-                    <a
-                      key={index}
-                      href={ext.link}
-                    >
-                      {ext.icon}
-                    </a>
-                  )
-                })
-              }
-            </HStack>
-          }
-        </VStack>
-      </Box>
-      <Center pb={['5', '5', '0']} ml={marginOverlapSize} zIndex='-1' display={['none', 'none', !flip ? 'inline' : 'none']}>
-        <Image
-          borderRadius={'md'}
-          width={500}
-          height={350}
-          src={'/portfolio' + project.imageUrl}
-          alt='Wai Choon profile picture'
-        />
-      </Center>
-    </Flex>
+          </VStack>
+        </Box>
+      </VStack>
+    </GridItem>
   );
 }
