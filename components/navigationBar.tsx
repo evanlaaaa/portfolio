@@ -1,10 +1,9 @@
-import { HStack, Container, Text, Box, Flex, Center, Show, Circle, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Input, useDisclosure, VStack } from "@chakra-ui/react";
+import { HStack, Container, Text, Box, Flex, Center, Show, Circle, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerOverlay, useDisclosure, VStack } from "@chakra-ui/react";
 import localFont from "next/font/local";
 import Link from "./link";
 import { INavigationBarProps } from "../types/interface";
 import { useRouter } from "next/router";
-import { FaArrowLeft, FaBars, FaHamburger } from "react-icons/fa";
-import { useRef } from "react";
+import { FaBars } from "react-icons/fa";
 
 const roboto = localFont({
   src: [

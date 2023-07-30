@@ -1,6 +1,4 @@
 import { Box, Flex, VStack, Image, Text, HStack, GridItem, Icon } from "@chakra-ui/react";
-
-// @ts-ignore
 import { useState } from "react";
 import localFont from "next/font/local";
 import { IProject } from "../types/interface";
@@ -31,7 +29,7 @@ export const ProjectCard = ({project, ...pros}: {project: IProject}) => {
   }
 
   const handleClick = (e: any) => {
-    router.push(`/project/${project.id}`, undefined, { shallow: true})
+    router.push({ pathname: `/project`, query: { id: project.id}}, undefined, { shallow: true})
   }
 
   const onImageClose = () : void => {

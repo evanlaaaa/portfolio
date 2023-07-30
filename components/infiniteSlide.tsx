@@ -1,4 +1,4 @@
-import { Box, HStack, keyframes, Text } from "@chakra-ui/react";
+import { Box, HStack, keyframes } from "@chakra-ui/react";
 import ScribblesOne from "./scribbles/scribble1";
 import { createRef, useCallback, useEffect, useState } from "react";
 import ScribblesTwo from "./scribbles/scribble2";

@@ -1,4 +1,4 @@
-import { IJob } from "../model/interfaces";
+import { IJob } from "../types/interface";
 
 export const experiences: IJob[] = [
   {

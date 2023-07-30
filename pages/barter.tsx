@@ -1,7 +1,7 @@
 import { Box, Center, Container, Flex, Heading, HStack, Input, Text, Image, Checkbox, VStack, Button } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from 'next/head'
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { TextBox } from "../components/input";
 
 const Barter: NextPage = () => {

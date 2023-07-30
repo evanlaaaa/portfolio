@@ -1,25 +1,26 @@
-import { Box, Circle, Container, HStack, VStack, Text, Heading, Image, Flex, Grid, Icon, Show } from "@chakra-ui/react";
-import { GetServerSideProps, GetStaticProps, NextPage, NextPageContext } from "next";
+import { Box, Circle, VStack, Text, Image, Flex, Grid, Icon, Show } from "@chakra-ui/react";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { NavigationBarLayout } from "../../components/layout/navBar";
-import { IProject } from "../../types/interface";
+import { useEffect, useState } from "react";
+import { NavigationBarLayout } from "../components/layout/navBar";
+import { IProject } from "../types/interface";
 import { FaArrowLeft, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import localFont from "next/font/local";
 import ImageViewer from 'react-simple-image-viewer';
 import React from "react";
+import { projects } from "../json/project";
 
-const oswald = localFont({ src: '../../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
+const oswald = localFont({ src: '../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
 
 const roboto = localFont({
   src: [
     {
-      path: '../../public/fonts/roboto/Roboto-Medium.ttf',
+      path: '../public/fonts/roboto/Roboto-Medium.ttf',
       weight: '500',
       style: 'normal'
     },
     {
-      path: '../../public/fonts/roboto/Roboto-Regular.ttf',
+      path: '../public/fonts/roboto/Roboto-Regular.ttf',
       weight: '400',
       style: 'normal'
     }
@@ -48,9 +49,8 @@ const Project: NextPage = () => {
 
   const fetchProjects = async () => {
     const { id } = router.query
-    const response = await fetch(`/portfolio/api/project/${id}`);
-    const data = await response.json();
-    setProject(data)
+    let project: IProject = projects.find(p => p.id === Number(id))!
+    setProject(project)
   }
 
   const onImageOpen = (e: any, i: number) : void => {

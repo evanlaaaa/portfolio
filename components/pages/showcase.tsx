@@ -1,30 +1,19 @@
 import { Box, Text, Divider, Center, Flex, VStack, SlideFade, Grid, useSafeLayoutEffect } from "@chakra-ui/react"
 import "@fontsource/roboto-mono";
-import { useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { ProjectCard } from "../projectCard";
 import { isMobile } from 'react-device-detect';
 import { NavigateContext } from "../layout";
-import { IProject } from "../../types/interface";
 import localFont from "next/font/local";
+import { projects } from "../../json/project";
 
 const oswald = localFont({ src: '../../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
 
 export const Showcase = () => {
   const [toShow, setToShow] = useState(false);
-  const [projects, setProjects] = useState<IProject[]>([])
   const boxRef = useRef<HTMLDivElement>(null);
 
   const { showcaseRef, setShowcaseRef } = useContext(NavigateContext);
-
-  useEffect(() => {
-    fetchProjects()
-  }, [])
-
-  const fetchProjects = async () => {
-    const response = await fetch("/portfolio/api/project");
-    const data = await response.json();
-    setProjects(data)
-  }
 
   useSafeLayoutEffect(() => {
     getPosition();

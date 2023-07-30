@@ -1,11 +1,9 @@
 import { Box, Text, Center, Flex, VStack, SlideFade, Button, Link, useSafeLayoutEffect } from "@chakra-ui/react"
-import { useEffect, useState, useRef, useContext, useLayoutEffect, useCallback } from "react";
+import { useEffect, useState, useRef, useContext, useCallback } from "react";
 import { isMobile } from 'react-device-detect';
 import { NavigateContext } from "../layout";
 import localFont from "next/font/local";
 import { renderToStaticMarkup } from "react-dom/server";
-import ScribbleEleven from "../scribbles/scribble11";
-import ScribbleSix from "../scribbles/scribble6";
 import ScribbleFourteen from "../scribbles/scribble14";
 
 const oswald = localFont({ src: '../../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})

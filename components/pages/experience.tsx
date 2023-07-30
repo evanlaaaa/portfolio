@@ -1,16 +1,14 @@
-import { Box, Link, Divider, VStack, Flex, Icon, Text, HStack, SlideFade, Center, Spacer, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, useSafeLayoutEffect } from '@chakra-ui/react'
-import { useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Box, Link, Divider, VStack, Flex, Icon, Text, HStack, SlideFade, Center, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, useSafeLayoutEffect } from '@chakra-ui/react'
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { AiOutlineSwapRight } from 'react-icons/ai'
 import { isMobile } from 'react-device-detect';
 import { NavigateContext } from '../layout';
 import localFont from 'next/font/local';
 import { FaLink, FaMapMarkerAlt } from 'react-icons/fa';
-import { IJob } from '../../model/interfaces';
 import { renderToStaticMarkup } from 'react-dom/server';
-import ScribblesTwelve from '../scribbles/scribble12';
-import ScribbleEight from '../scribbles/scribble8';
 import ScribbleEleven from '../scribbles/scribble11';
 import ScribbleSix from '../scribbles/scribble6';
+import { experiences } from '../../json/experience';
 
 const oswald = localFont({ src: '../../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
 
@@ -31,21 +29,10 @@ const roboto = localFont({
 
 export const Experience = () => {
   const [toShow, setToShow] = useState(false);
-  const [experiences, setExperiences] = useState<IJob[]>([])
 
   const boxRef = useRef<HTMLDivElement>(null);
 
   const { experienceRef, setExperienceRef } = useContext(NavigateContext);
-
-  const fetchExperience = async () => {
-    const response = await fetch("/portfolio/api/experience");
-    const data = await response.json();
-    setExperiences(data)
-  }
-
-  useEffect(() => {
-    fetchExperience()
-  }, [])
 
   useSafeLayoutEffect(() => {
     getPosition();

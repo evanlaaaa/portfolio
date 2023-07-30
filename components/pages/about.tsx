@@ -1,11 +1,10 @@
 import { Box, Text, Divider, Center, Flex, VStack, List, ListItem, ListIcon, HStack, SlideFade, Image, useSafeLayoutEffect } from "@chakra-ui/react"
-import { useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { FaReact, FaPhp, FaSwift, FaPython } from 'react-icons/fa';
 import { RiFlutterFill } from 'react-icons/ri'
 import { SiTypescript } from 'react-icons/si'
 import { isMobile } from 'react-device-detect';
 import { NavigateContext } from "../layout";
-import ScribblesThree from "../scribbles/scribble3";
 import { renderToStaticMarkup } from 'react-dom/server';
 import localFont from "next/font/local";
 import ScribblesNine from "../scribbles/scribble9";
