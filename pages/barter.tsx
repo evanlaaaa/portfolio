@@ -111,7 +111,7 @@ const Barter: NextPage = () => {
     - (t4rcount * (14286-(14286*parley/100)) * 6);
 
     setTotal(total);
-  } ,[t4Check, hakovenTrade, margoTrade, t4Stock, hakovenThreshold, margoThreshold, parley]);
+  } ,[t4Check, hakovenTrade, margoTrade, t4Stock, hakovenThreshold, margoThreshold, parley, t4restock]);
 
   return (
     <div>

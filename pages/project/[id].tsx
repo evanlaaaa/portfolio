@@ -1,4 +1,4 @@
-import { Box, Circle, Container, HStack, VStack, Text, Heading, Image, Flex, Grid, Icon } from "@chakra-ui/react";
+import { Box, Circle, Container, HStack, VStack, Text, Heading, Image, Flex, Grid, Icon, Show } from "@chakra-ui/react";
 import { GetServerSideProps, GetStaticProps, NextPage, NextPageContext } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -63,8 +63,22 @@ const Project: NextPage = () => {
     setIsOpen(false);
   }
 
+  const handleBack = () => {
+    router.replace({
+      pathname: '/',
+      query: {
+        des: 'Showcase'
+      }
+    }, '/')
+  }
+
   return (
     <Box minH='100vh' w='full' bg='primary.900'>
+      <Show above='md'>
+        <Circle size='60px' bg='forest.900' color='label.50' _hover={{ cursor: 'pointer' }} position='fixed' top='calc(64px + 64px)' left={'128px'} onClick={handleBack}>
+          <FaArrowLeft />
+        </Circle>
+      </Show>
       <VStack>
         <NavigationBarLayout 
           isStatic
@@ -94,6 +108,7 @@ const Project: NextPage = () => {
           </Text>
           <Box mt='60px' boxShadow='0 25px 50px -12px #e4e4e41c, 25px 0px 50px -12px #e4e4e41c,-25px 0px 50px -12px #e4e4e41c,0px -25px 50px -12px #e4e4e41c' borderRadius='md'>
             <Image
+              alt={project.imageUrl}
               borderRadius='md'
               src={project.imageUrl}
             />
@@ -133,8 +148,9 @@ const Project: NextPage = () => {
                 {
                   (project.gallery ?? []).map((l, i) => {
                     return (
-                      <Box key={i} onClick={(e) => onImageOpen(e, i)} maxH='70%' _hover={{ cursor: 'pointer' }}>
+                      <Box key={i} onClick={(e) => onImageOpen(e, i)} _hover={{ cursor: 'pointer' }}>
                         <Image
+                          alt={project.imageUrl}
                           borderRadius='md'
                           h='full'
                           w='full'

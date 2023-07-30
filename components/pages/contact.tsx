@@ -3,6 +3,10 @@ import { useEffect, useState, useRef, useContext, useLayoutEffect, useCallback }
 import { isMobile } from 'react-device-detect';
 import { NavigateContext } from "../layout";
 import localFont from "next/font/local";
+import { renderToStaticMarkup } from "react-dom/server";
+import ScribbleEleven from "../scribbles/scribble11";
+import ScribbleSix from "../scribbles/scribble6";
+import ScribbleFourteen from "../scribbles/scribble14";
 
 const oswald = localFont({ src: '../../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
 
@@ -51,7 +55,22 @@ export const Contact = () => {
   }, [contactRef])
   
   return (
-    <Box h={'100vh'} w='full' ref={boxRef} bg='primary.900'>
+    <Box 
+      h={'100vh'} 
+      w='full' 
+      ref={boxRef} 
+      bg='primary.900'
+      style={{
+        backgroundImage: `
+          url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(renderToStaticMarkup(<ScribbleFourteen fill="#ffcaaa8a" transform={'scale(0.1)'} />))}")
+        `,
+        backgroundPosition: `
+          0px -200px
+        `,
+        backgroundSize: '100vw 100vh',
+        backgroundRepeat: 'no-repeat', 
+      }}
+    >
       <Box h='full' w='full' display='flex' justifyContent={'center'}>
         <SlideFade in={toShow} offsetX={ isMobile ? 0 : 80} style={{width: '100%', height: '100%'}}>
           <Center w='full' h='full'>

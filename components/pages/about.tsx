@@ -10,6 +10,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import localFont from "next/font/local";
 import ScribblesNine from "../scribbles/scribble9";
 import ScribblesTwelve from "../scribbles/scribble12";
+import ScribbleEight from "../scribbles/scribble8";
 
 const oswald = localFont({ src: '../../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
 
@@ -78,15 +79,21 @@ export const AboutMe = () => {
           url("/images/background/about_bg.png"),
           url("/images/background/about_bg2.png"),
           url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(renderToStaticMarkup(<ScribblesTwelve fill="#ffcaaa8a" transform={`scale(1, -1) rotate(-80) scale(0.1)`}/>))}"),
-          url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(renderToStaticMarkup(<ScribblesThree fill="#ffcaaa8a" transform={`scale(0.1)`}/>))}")
+          url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(renderToStaticMarkup(<ScribbleEight fill="#ffcaaa8a" transform={`scale(0.1)`}/>))}")
         `
       }}
       style={{
         backgroundPosition: `
           50px 550px,
           1400px 100px,
-          -300px -200px,
-          1000px 300px
+          -500px -200px,
+          500px 300px
+        `,
+        backgroundSize: `
+          auto,
+          auto,
+          100vw 100vh,
+          100vw 100vh
         `,
         backgroundRepeat: 'no-repeat', 
       }}

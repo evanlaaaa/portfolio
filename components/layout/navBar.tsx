@@ -1,5 +1,5 @@
 import { Slide } from "@chakra-ui/react";
-import { useEffect, useState, useContext, useCallback } from "react";
+import { useEffect, useState, useContext, useCallback, useRef } from "react";
 import { NavigateContext } from ".";
 import localFont from "next/font/local";
 import NavigationBar from "../navigationBar";
@@ -8,12 +8,13 @@ import { useRouter } from "next/router";
 
 export const NavigationBarLayout = ({isStatic = false, isOutOfMainPage = false}: INavigationLayoutProps) => {
   const [isUp, setIsUp] = useState(false);
-
   const [isHeaderActive, setIsHeaderActive] = useState(!isOutOfMainPage);
   const [isAboutActive, setIsAboutActive] = useState(false);
   const [isExperienceActive, setIsExperienceActive] = useState(false);
   const [isShowcaseActive, setIsShowcaseActive] = useState(false);
   const [isContactActive, setIsContactActive] = useState(false);
+
+  const redirectRef = useRef(false)
 
   const { aboutRef, experienceRef, showcaseRef, contactRef } = useContext(NavigateContext);
 
@@ -43,12 +44,13 @@ export const NavigationBarLayout = ({isStatic = false, isOutOfMainPage = false}:
   ]
 
   const scroll = useCallback(() => {
+    
     if (
       aboutRef == null || experienceRef  == null || showcaseRef  == null || contactRef  == null ||
       aboutRef.current == null || experienceRef.current == null || showcaseRef.current == null || contactRef.current == null ||
       isOutOfMainPage
     ) return
-
+      
     setIsHeaderActive(window.scrollY <= aboutRef!.current!.offsetTop - 300);
     setIsAboutActive(window.scrollY > aboutRef!.current!.offsetTop - 300 && window.scrollY <= experienceRef!.current!.offsetTop - 300);
     setIsExperienceActive(window.scrollY > experienceRef!.current!.offsetTop - 300 && window.scrollY <= showcaseRef!.current!.offsetTop - 300);
@@ -61,8 +63,7 @@ export const NavigationBarLayout = ({isStatic = false, isOutOfMainPage = false}:
     else if (!isStatic && window.scrollY > 500) {
       setIsUp(true)
     }
-    
-  }, []);
+  }, [])
 
   useEffect(() => {
     if(isOutOfMainPage) return
@@ -76,9 +77,30 @@ export const NavigationBarLayout = ({isStatic = false, isOutOfMainPage = false}:
     window.scrollTo({top: window.scrollY - 1})
   },[])
 
+  useEffect(() => {
+    const { des } = router.query
+
+    if (
+      aboutRef == null || experienceRef  == null || showcaseRef  == null || contactRef  == null ||
+      aboutRef.current == null || experienceRef.current == null || showcaseRef.current == null || contactRef.current == null
+    ) return
+
+    if (des !== undefined && !redirectRef.current) {
+      redirectRef.current = true
+      let top = 0
+      switch(des) {
+        case 'About Me': top = aboutRef!.current!.offsetTop; break;
+        case 'Experience': top = experienceRef!.current!.offsetTop; break;
+        case 'Showcase': top = showcaseRef!.current!.offsetTop; break;
+        case 'Contact': top = contactRef!.current!.offsetTop; break;
+      }
+      window.scrollTo({top: top, left: 0});
+    }
+  }, [aboutRef, experienceRef, showcaseRef, contactRef])
+
   const onNavigatePressed = async (route: string) => {
     if (isOutOfMainPage) {
-      router.push('/', undefined, { shallow: true })
+      router.push({ pathname: '/', query: { des: route }}, '/', { shallow: true })
     }
     else {
       let top = 0

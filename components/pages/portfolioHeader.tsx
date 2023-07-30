@@ -25,7 +25,7 @@ export const PortfolioHeader = () => {
           <Center>
             <VStack w={['full', 'xl']}>
               <Box textAlign={'center'}>
-                <Text color="secondary.200" fontSize="6xl" className={oswald.className} fontWeight={300}>HELLO, I'M</Text>
+                <Text color="secondary.200" fontSize="6xl" className={oswald.className} fontWeight={300}>HELLO, I&apos;M</Text>
                 <Text color="secondary.300" fontSize="6xl" className={oswald.className} fontWeight={500}>CHONG WAI CHOON</Text>
               </Box>
               <Box px={20} w='full'>

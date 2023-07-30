@@ -41,7 +41,7 @@ export const projects: IProject[] = [
   {
     id: 5,
     projectName: "Reverse Engineer MT-Framework *.ipr file",
-    projectDescription: "Requested by the client, I enabled him to import 3D models based on asset placement (*.ipr) from Capcom's in-house game engine, MT-Framework. Using 010 Editor, I analyzed the binary file structure and extracted the relevant data. I then wrote custom import functions in Python to convert the extracted data into a format compatible with Blender's API.",
+    projectDescription: "Requested by one of the member from the community I participated with, I enabled him to import 3D models based on asset placement (*.ipr) from Capcom's in-house game engine, MT-Framework. Using 010 Editor, I analyzed the binary file structure and extracted the relevant data. I then wrote custom import functions in Python to convert the extracted data into a format compatible with Blender's API.",
     imageUrl: '/images/ipr.png',
     technologies: ["Python", "010 Editor", "Blender"],
     gallery: ["/images/ipr/1.png", "/images/ipr/2.png"],

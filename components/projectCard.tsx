@@ -49,7 +49,7 @@ export const ProjectCard = ({project, ...pros}: {project: IProject}) => {
   return (
     <GridItem w='100%' borderRadius='md' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} _hover={{ cursor: 'pointer' }}>
       <VStack align='stretch' spacing={0} h='full' borderRadius='md'>
-        <Box overflow='hidden' position='relative'>
+        <Box overflow='hidden' position='relative' borderTopRadius='md'>
           <Box zIndex={1} position='absolute' h='full' w='full' bg='black' opacity={isImageZoom ? 0.4 : 0} transition={'opacity 0.5s ease'} />
           <Image
             transform={`scale3d(${isImageZoom ? '1.1' : '1.0'},${isImageZoom ? '1.1' : '1.0'},1)`}

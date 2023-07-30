@@ -28,7 +28,7 @@ const Index = ({children} : {children: any}) => {
 
   const [showNavigationBar, setShowNavigationBar] = useState(false)
   useEffect(() => {
-    if (asPath != '/barter' && asPath != '/project') {
+    if (asPath != '/barter' && !asPath.includes('/project')) {
       setShowNavigationBar(true)
     }
     else {

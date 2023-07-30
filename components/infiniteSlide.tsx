@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { IInfiniteSlideProps } from "../types/interface";
 import ScribblesFour from "./scribbles/scribble4";
 
-const infiniteSlide = ({direction, offset = 0, isEven}: IInfiniteSlideProps) => {
+const InfiniteSlide = ({direction, offset = 0, isEven}: IInfiniteSlideProps) => {
   const itemWidth = 50;
   const itemSpacing = 200;
 
@@ -101,4 +101,4 @@ const SlideItem = ({w, h, ...rest}: {w: string, h: string} & any) => {
   )
 }
 
-export default infiniteSlide;
+export default InfiniteSlide;

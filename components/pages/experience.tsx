@@ -6,6 +6,11 @@ import { NavigateContext } from '../layout';
 import localFont from 'next/font/local';
 import { FaLink, FaMapMarkerAlt } from 'react-icons/fa';
 import { IJob } from '../../model/interfaces';
+import { renderToStaticMarkup } from 'react-dom/server';
+import ScribblesTwelve from '../scribbles/scribble12';
+import ScribbleEight from '../scribbles/scribble8';
+import ScribbleEleven from '../scribbles/scribble11';
+import ScribbleSix from '../scribbles/scribble6';
 
 const oswald = localFont({ src: '../../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
 
@@ -66,7 +71,24 @@ export const Experience = () => {
   }
 
   return (
-    <Box minH='100vh' w='full' bg='primary.900' ref={boxRef}>
+    <Box 
+      minH='100vh' 
+      w='full' 
+      bg='primary.900' 
+      ref={boxRef}
+      style={{
+        backgroundImage: `
+          url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(renderToStaticMarkup(<ScribbleSix fill="#ffcaaa8a" transform={'scale(0.1) rotate(-45)'} />))}"),
+          url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(renderToStaticMarkup(<ScribbleEleven fill="#ffcaaa8a" transform={'scale(0.1) rotate(-15)'} />))}")
+        `,
+        backgroundPosition: `
+          -500px 0px,
+          500px 300px
+        `,
+        backgroundSize: '100vw 100vh',
+        backgroundRepeat: 'no-repeat', 
+      }}
+    >
       <Box h='full' w='full' display='flex' justifyContent={'center'} >
         <SlideFade in={toShow} offsetX={ isMobile ? 0 : -80} style={{width: '100%', height: '100%'}}>
           <Center pt='calc(100vh / 3)'>
@@ -80,12 +102,12 @@ export const Experience = () => {
                     <Divider />
                   </Box>
                 </Flex>
-                <Accordion px={{ base: 0, md: 10 }} allowToggle pt={5} pb={20} defaultIndex={[0]}>
+                <Accordion w='full' px={{ base: 0, md: 10 }} allowToggle pt={5} pb={20} defaultIndex={[0]}>
                   {
                     experiences.map((job, index) => {
                       return (
                         <AccordionItem border='none' my={3} key={index}>
-                          <AccordionButton bgColor='forest.500' py={3} px={5} borderRadius={'md'} className={roboto.className} onClick={() => getPosition()} _hover={{ bgColor: 'none' }}>
+                          <AccordionButton bgColor='forest.500' py={3} px={5} borderRadius={'md'} className={roboto.className} onClick={() => getPosition()} _hover={{ bgColor: 'forest.600' }}>
                             <HStack w='full' borderRadius={'xl'} className={roboto.className}>
                               <Box flex={1} textAlign='left'>
                                 {job.positionTitle} @ {job.companyName}
