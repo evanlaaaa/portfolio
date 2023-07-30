@@ -14,16 +14,6 @@ const nextConfig = {
       '/barter': { page: '/barter' }
     }
   },
-  redirects: async function() {
-    return [
-      {
-        source: '/',
-        destination: '/portfolio',
-        basePath: false,
-        permanent: true,
-      },
-    ]
-  },
 }
 
 module.exports = nextConfig
