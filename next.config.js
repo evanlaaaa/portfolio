@@ -10,6 +10,7 @@ const nextConfig = {
   ) {
     return {
       '/portfolio': { page: '/' },
+      '/project': { page: '/project' },
       '/barter': { page: '/barter' }
     }
   },
