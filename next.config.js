@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-
 const nextConfig = {
   reactStrictMode: true,
   basePath: '/portfolio',
@@ -10,10 +9,11 @@ const nextConfig = {
     { dev, dir, outDir, distDir, buildId }
   ) {
     return {
-      '/portfolio': { page: '/' },
+      '/': { page: '/' },
       '/barter': { page: '/barter' }
     }
   },
 }
+
 
 module.exports = nextConfig
