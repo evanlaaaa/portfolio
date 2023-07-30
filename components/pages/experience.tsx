@@ -38,7 +38,7 @@ export const Experience = () => {
   const { experienceRef, setExperienceRef } = useContext(NavigateContext);
 
   const fetchExperience = async () => {
-    const response = await fetch("/api/experience");
+    const response = await fetch("/portfolio/api/experience");
     const data = await response.json();
     setExperiences(data)
   }

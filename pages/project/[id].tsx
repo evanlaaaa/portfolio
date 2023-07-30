@@ -7,6 +7,7 @@ import { IProject } from "../../types/interface";
 import { FaArrowLeft, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import localFont from "next/font/local";
 import ImageViewer from 'react-simple-image-viewer';
+import React from "react";
 
 const oswald = localFont({ src: '../../public/fonts/oswald/Oswald-VariableFont_wght.ttf'})
 
@@ -47,7 +48,7 @@ const Project: NextPage = () => {
 
   const fetchProjects = async () => {
     const { id } = router.query
-    const response = await fetch(`/api/project/${id}`);
+    const response = await fetch(`/portfolio/api/project/${id}`);
     const data = await response.json();
     setProject(data)
   }
@@ -110,7 +111,7 @@ const Project: NextPage = () => {
             <Image
               alt={project.imageUrl}
               borderRadius='md'
-              src={project.imageUrl}
+              src={'/portfolio' + project.imageUrl}
             />
           </Box>
           <Box>
@@ -155,7 +156,7 @@ const Project: NextPage = () => {
                           h='full'
                           w='full'
                           objectFit='cover'
-                          src={l}
+                          src={'/portfolio' + l}
                         />
                       </Box>
                     )
@@ -168,7 +169,7 @@ const Project: NextPage = () => {
       </VStack>
       {isOpen &&
         <ImageViewer
-          src={ project.gallery!.map((v) => v) }
+          src={ project.gallery!.map((v) => `/portfolio/${v}`) }
           currentIndex={ currImageIndex }
           disableScroll={ true }
           closeOnClickOutside={ true }

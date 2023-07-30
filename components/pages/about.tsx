@@ -76,8 +76,8 @@ export const AboutMe = () => {
       bg='primary.900' 
       bgImage={{
         md: `
-          url("/images/background/about_bg.png"),
-          url("/images/background/about_bg2.png"),
+          url("/portfolio/images/background/about_bg.png"),
+          url("/portfolio/images/background/about_bg2.png"),
           url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(renderToStaticMarkup(<ScribblesTwelve fill="#ffcaaa8a" transform={`scale(1, -1) rotate(-80) scale(0.1)`}/>))}"),
           url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(renderToStaticMarkup(<ScribbleEight fill="#ffcaaa8a" transform={`scale(0.1)`}/>))}")
         `
@@ -122,7 +122,7 @@ export const AboutMe = () => {
                     <Image
                       borderRadius='full'
                       boxSize='300px'
-                      src='/images/pp.jpg'
+                      src='/portfolio/images/pp.jpg'
                       alt='Wai Choon profile picture'
                     />
                   </Center>

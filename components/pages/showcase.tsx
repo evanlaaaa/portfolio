@@ -21,7 +21,7 @@ export const Showcase = () => {
   }, [])
 
   const fetchProjects = async () => {
-    const response = await fetch("/api/project");
+    const response = await fetch("/portfolio/api/project");
     const data = await response.json();
     setProjects(data)
   }
