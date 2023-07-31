@@ -2,7 +2,7 @@
 
 ### Description
 
-This is my personal website built with React.js and Next.js. 
+This is my personal website built with React.js and Next.js. Currently hosted on Github Pages: https://evanlaaaa.github.io/portfolio/
 
 ### Features
 
