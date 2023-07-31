@@ -111,7 +111,7 @@ const Project: NextPage = () => {
             <Image
               alt={project.imageUrl}
               borderRadius='md'
-              src={'/portfolio' + project.imageUrl}
+              src={project.imageUrl}
             />
           </Box>
           <Box>
@@ -156,7 +156,7 @@ const Project: NextPage = () => {
                           h='full'
                           w='full'
                           objectFit='cover'
-                          src={'/portfolio' + l}
+                          src={l}
                         />
                       </Box>
                     )
@@ -169,7 +169,7 @@ const Project: NextPage = () => {
       </VStack>
       {isOpen &&
         <ImageViewer
-          src={ project.gallery!.map((v) => `/portfolio/${v}`) }
+          src={ project.gallery!.map((v) => v) }
           currentIndex={ currImageIndex }
           disableScroll={ true }
           closeOnClickOutside={ true }
