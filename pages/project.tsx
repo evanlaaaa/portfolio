@@ -151,12 +151,12 @@ const Project: NextPage = () => {
                     return (
                       <Box key={i} onClick={(e) => onImageOpen(e, i)} _hover={{ cursor: 'pointer' }}>
                         <Image
-                          alt={'/portfolio/'+project.imageUrl}
+                          alt={project.imageUrl}
                           borderRadius='md'
                           h='full'
                           w='full'
                           objectFit='cover'
-                          src={l}
+                          src={'/portfolio/'+l}
                         />
                       </Box>
                     )
