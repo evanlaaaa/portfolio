@@ -55,7 +55,7 @@ export const ProjectCard = ({project, ...pros}: {project: IProject}) => {
             w='full'
             h='228px'
             borderTopRadius='md'
-            src={project.imageUrl}
+            src={'/portfolio/'+project.imageUrl}
             alt={project.projectName}
             objectFit='cover'
           />

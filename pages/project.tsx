@@ -111,7 +111,7 @@ const Project: NextPage = () => {
             <Image
               alt={project.imageUrl}
               borderRadius='md'
-              src={project.imageUrl}
+              src={'/portfolio/'+project.imageUrl}
             />
           </Box>
           <Box>
@@ -151,7 +151,7 @@ const Project: NextPage = () => {
                     return (
                       <Box key={i} onClick={(e) => onImageOpen(e, i)} _hover={{ cursor: 'pointer' }}>
                         <Image
-                          alt={project.imageUrl}
+                          alt={'/portfolio/'+project.imageUrl}
                           borderRadius='md'
                           h='full'
                           w='full'
@@ -169,7 +169,7 @@ const Project: NextPage = () => {
       </VStack>
       {isOpen &&
         <ImageViewer
-          src={ project.gallery!.map((v) => v) }
+          src={ project.gallery!.map((v) => `/portfolio/${v}`) }
           currentIndex={ currImageIndex }
           disableScroll={ true }
           closeOnClickOutside={ true }

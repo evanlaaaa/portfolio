@@ -183,7 +183,7 @@ const Barter: NextPage = () => {
                         <Image
                           alt={t4}
                           boxSize='40px'
-                          src={'/images/bdo/' + t4 + '.png'}
+                          src={'/portfolio/images/bdo/' + t4 + '.png'}
                         />
                       </Box>
                     )
@@ -211,7 +211,7 @@ const Barter: NextPage = () => {
                           <Image
                             alt={t4}
                             boxSize='40px'
-                            src={'/images/bdo/' + t4 + '.png'}
+                            src={'/portfolio/images/bdo/' + t4 + '.png'}
                           />
                           <Text color={t4Check[i] ? t4Stock[i] - 4 < t4restock ? 'red.400' : 'green.400': t4Stock[i] < t4restock ? 'red.400' : 'green.400'}>
                             {t4Check[i] ? t4Stock[i] - 4 : t4Stock[i]}
@@ -254,7 +254,7 @@ const Barter: NextPage = () => {
                         <Image
                           alt={t4}
                           boxSize='40px'
-                          src={'/images/bdo/' + t4 + '.png'}
+                          src={'/portfolio/images/bdo/' + t4 + '.png'}
                         />
                       </HStack>
                     )

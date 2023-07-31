@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     <Box overflowX='hidden'>
       <Head>
         <title>Wai Choon | Home</title>
-        <link rel="icon" href="/images/favicon.ico" />
+        <link rel="icon" href="/portfolio/images/favicon.ico" />
       </Head>
       <PortfolioHeader />
       <AboutMe />

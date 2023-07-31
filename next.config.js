@@ -3,7 +3,7 @@
 const nextConfig = {
   reactStrictMode: true,
   basePath: '/portfolio',
-  assetPrefix: '/repository/'
+  assetPrefix: '/portfolio/'
 }
 
 
