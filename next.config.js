@@ -9,7 +9,7 @@ const nextConfig = {
     { dev, dir, outDir, distDir, buildId }
   ) {
     return {
-      '/portfolio': { page: '/' },
+      '/': { page: '/' },
       '/project': { page: '/project' },
       '/barter': { page: '/barter' }
     }
