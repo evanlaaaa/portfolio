@@ -62,7 +62,7 @@ export const ProjectCard = ({project, ...pros}: {project: IProject}) => {
           
         </Box>
         <Box py={5} px={8} bg='forest.900' flex={1} borderBottomRadius='md'>
-          <VStack alignItems='start'>
+          <VStack alignItems='start' h='full'>
             <Text color='label.200' fontSize='lg' className={roboto.className}>{project.projectName}</Text>
             <Flex flexWrap={'wrap'} gap={2.5} py={4}>
               {
@@ -82,7 +82,7 @@ export const ProjectCard = ({project, ...pros}: {project: IProject}) => {
               }
             </Flex>
             {project.external &&
-              <HStack justifyContent='end' w='full'>
+              <HStack justifyContent='end' w='full' h='full' alignSelf='end' alignItems='end'>
                 {
                   project.external.map((ext, index) => {
                     return (

@@ -52,4 +52,25 @@ export const projects: IProject[] = [
       }
     ]
   },
+  {
+    id: 6,
+    projectName: "TMDB",
+    projectDescription: "TMDB App made with Flutter. Able to view movies in Grid View and Page View. Also supported search and filtering, and view trailer",
+    imageUrl: '/images/tmdb.png',
+    technologies: ["Flutter", "API Integration"],
+    gallery: [
+      "/images/tmdb/1.png", 
+      "/images/tmdb/2.png",
+      "/images/tmdb/3.png",
+      "/images/tmdb/4.png",
+      "/images/tmdb/5.png",
+      "/images/tmdb/6.png",
+  ],
+    external: [
+      {
+        isGithub: true,
+        link: 'https://github.com/evanlaaaa/tmdb'
+      }
+    ]
+  },
 ]

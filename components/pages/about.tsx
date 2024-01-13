@@ -127,7 +127,7 @@ export const AboutMe = () => {
                   </Center>
                   <VStack px={{ base: 5, md: 0}} align="flex-start" flex='1' spacing={2.5}>
                     <Text fontSize='md' color='label.400' className={roboto.className} textAlign={['center', 'left']} __css={{ 'text-wrap': 'balance'}}>
-                      Hello! My name is Wai Choon, also known as Evan, and I am passionate about programming. I thrive on pushing the boundaries of my comfort zone and actively seek out new learning opportunities. In my free time, I utilize programming to enhance my everyday life by automating tasks and streamlining processes. I find great satisfaction in using my programming skills to improve my own efficiency and productivity.
+                      Greetings! I go by the name Wai Choon, but Evan works just as well. I hold a deep passion for the art of programming. My true joy lies in venturing beyond familiar territory and actively pursuing fresh avenues of knowledge. n my free time, I utilize programming to enhance my everyday life by automating tasks and streamlining processes. I find great satisfaction in using my programming skills to improve my own efficiency and productivity.
                     </Text>
                     <Text fontSize='md' color='label.400' className={roboto.className} textAlign={['center', 'left']} __css={{ 'text-wrap': 'balance'}}>
                       Furthermore, I am dedicated to contributing to the communities I am a part of. I enjoy sharing my expertise and providing quality-of-life scripts to enhance the overall experience for everyone involved.

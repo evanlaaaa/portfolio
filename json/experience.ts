@@ -8,15 +8,18 @@ export const experiences: IJob[] = [
     positionTitle: "Software Engineer",
     dateRange: "Aug 2022 - Present",
     description: [
-      "Migrated existing Laravel Blade views to React.js using Inertia.js, as well as revamped the UI/UX, providing a smoother and more interactive user experience",
+      "Delivered a custom internal Kotlin app with integrated AppsFlyer analytics for enhanced performance and user insights",
+      "Developed Flutter mobile app leveraging Strapi headless CMS to deliver a seamless content-rich experience",
+      "Developed a cross-platform APK download solution using Flutter web as a proxy, seamlessly integrated into an existing ASP.NET project to ensure tailored downloads for diverse user architectures",
+      "Migrated existing Laravel Blade views to React.js using Inertia.js, as well as revamped the UI/UX, providing a smoother and more interactive user experience. Developed necessary APIs to seamlessly connect with the upgraded web application",
       "Established CI pipelines using GitLab CI to automate testing for Flutter app",
       "Developed interactive Kline charts from scratch in Flutter to meet client’s requirement",
-      "Wrote automated unit and integration test using Appium and Mocha for their existed Kotlin and Swift app",
-      "Collaborate with the UI/UX team to translate design wireframes into high-quality UIs and improve the UI/UX of the existing Swift app with UIKit",
+      "Wrote automated unit and integration test using Appium and Mocha for their existing Kotlin and Swift app, and UI testing using Mocha for their existed Laravel project",
+      "Collaborate with the UI/UX team to translate design wireframes into high-quality UIs and improve the UI/UX of the existing Laravel project and existing app with Swift UIKit",
       "Building mobile apps using Flutter that interact with client's new extended fintech services"
     ],
     technologies: [
-      "React.js", "Inertia.js", "Flutter", "Laravel", "Swift", "UIKit", "Appium", "TypeScript", "CI/CD", "Kotlin", "PHP", "Dart"
+      "React.js", "Inertia.js", "Flutter", "Laravel", "Swift", "UIKit", "Appium", "TypeScript", "CI/CD", "Kotlin", "PHP", "Dart", "CMS"
     ]
   },
   {
@@ -27,12 +30,14 @@ export const experiences: IJob[] = [
     dateRange: "Jan 2021 - Jul 2022",
     description: [
       "Designing and building a mobile application to facilitate user communication within Vendron Cloud ecosystem",
-      "Worked on integration with third-party identity verification services, built and designed new user registration flow",
-      "Wrote integration tests for automated UI testing",
+      "Contributed to the integration with third-party identity verification services by designing and implementing a robust API that seamlessly interacts with Veriff. Worked on integration with these API into existing mobile applications, redesigned and built new user registration flow",
+      "Improved API performance, resulting in faster response times and a smoother overall experience for end-users",
+      "Streamlined API architecture by refactoring existing APIs into RESTful standards, promoting better maintainability, and scalability",
+      "Wrote integration tests for their existing Flutter app to automate UI testing",
       "Built graphs using fl_chart library for visualizing customers’ sales metrics"
     ],
     technologies: [
-      "Java", "Flutter", "Veriff", "PHP"
+      "Flutter", "Veriff", "PHP"
     ]
   },
   {
@@ -41,12 +46,12 @@ export const experiences: IJob[] = [
     positionTitle: "Full-stack Web Developer",
     dateRange: "Apr 2018 - Aug 2018",
     description: [
-      "Built clinic management system which helped clients save 10% of their monthly expenses",
-      "Worked on integration with third-party notification service",
-      "Built a mobile application to facilitate internal user’s communication with Appointment module",
+      "Built clinic management system with Laravel and React.js which helped clients save 10% of their monthly expenses",
+      "Worked on integration with third-party Pusher notification service",
+      "Built a mobile application with React Native to facilitate internal user’s communication with Appointment module",
     ],
     technologies: [
-      "Javascript", "JQuery", "PHP", "Pusher", "SQL"
+      "Laravel", "React.js", "React Native", "TypeScript"
     ]
   },
   {
