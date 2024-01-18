@@ -65,12 +65,27 @@ export const projects: IProject[] = [
       "/images/tmdb/4.png",
       "/images/tmdb/5.png",
       "/images/tmdb/6.png",
-  ],
+    ],
     external: [
       {
         isGithub: true,
         link: 'https://github.com/evanlaaaa/tmdb'
       }
     ]
+  },
+  {
+    id: 7,
+    projectName: "Flutter Interactive Candlestick Chart",
+    projectDescription: "Thwarted by the limitations of existing Flutter charting packages, I embarked on a quest to build a better candlestick chart. Inspired by TradingView's dynamic transformations, I crafted a custom solution that empowers you to zoom in on minute movements or out to grasp the big picture. I dove headfirst into understanding how widgets tick, building my own custom painter to handle the intricacies of candlestick rendering. Then, I tackled the intricate dance of gesture events, ensuring smooth panning and zooming at any scale. Included overlay popular indicators like Bollinger %B, CCI, and RSI to uncover hidden trends and confirm trading signals. ",
+    imageUrl: '/images/csc.png',
+    technologies: ["Flutter", "Computer Graphics Math"],
+    gallery: [
+      "/images/cs/1.gif", 
+      "/images/cs/2.gif",
+      "/images/cs/3.gif",
+      "/images/cs/4.gif",
+      "/images/cs/5.gif",
+      "/images/cs/6.png"
+    ],
   },
 ]

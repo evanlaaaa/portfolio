@@ -8,18 +8,16 @@ export const experiences: IJob[] = [
     positionTitle: "Software Engineer",
     dateRange: "Aug 2022 - Present",
     description: [
-      "Delivered a custom internal Kotlin app with integrated AppsFlyer analytics for enhanced performance and user insights",
-      "Developed Flutter mobile app leveraging Strapi headless CMS to deliver a seamless content-rich experience",
-      "Developed a cross-platform APK download solution using Flutter web as a proxy, seamlessly integrated into an existing ASP.NET project to ensure tailored downloads for diverse user architectures",
-      "Migrated existing Laravel Blade views to React.js using Inertia.js, as well as revamped the UI/UX, providing a smoother and more interactive user experience. Developed necessary APIs to seamlessly connect with the upgraded web application",
-      "Established CI pipelines using GitLab CI to automate testing for Flutter app",
-      "Developed interactive Kline charts from scratch in Flutter to meet client’s requirement",
-      "Wrote automated unit and integration test using Appium and Mocha for their existing Kotlin and Swift app, and UI testing using Mocha for their existed Laravel project",
-      "Collaborate with the UI/UX team to translate design wireframes into high-quality UIs and improve the UI/UX of the existing Laravel project and existing app with Swift UIKit",
-      "Building mobile apps using Flutter that interact with client's new extended fintech services"
+      "Developed a Kotlin app with AppsFlyer integration, achieving 20% higher install tracking accuracy than Firebase Analytics.",
+      "Deployed a robust Strapi (Headless CMS) backend on Amazon EC2 using Docker, seamlessly integrated with PostgreSQL for enhanced data management and scalability. Developed a Flutter app that effectively interacts with the API, enabling efficient content management and real-time data access.",
+      "Solved the challenge of delivering correct APK variants for Flutter apps to users with different device architectures. Implemented a dynamic APK delivery solution using Flutter Web as proxy webpage, integrated seamlessly into existing .NET projects. Reducing download size by 70%.",
+      "Modernized a Laravel application by strategically migrating Blade views to React.js using Inertia.js, enhancing user experience and maintainability. Led planning and decision-making for the migration, ensuring a smooth transition and minimal disruption to existing functionality. Developed necessary APIs for seamless integration between the new frontend and backend.",
+      "Led the development of a Flutter app from scratch, enabling intuitive interaction with the client's extended service, featuring a fully custom-built interactive Candlestick Chart for real-time market visualization, enhancing user engagement and investment decision-making. Leveraged CoinGecko APIs for seamless data integration and market updates, ensuring accurate and timely information within the app.",
+      "Wrote unit and integration tests for Swift and Kotlin apps using Appium and Mocha. Also wrote unit, integration, UI tests for Flutter app using built-in testing tools. Established a robust Gitlab CI/CD pipeline for the Flutter app for automated testing.",
+      "Collaborated with the UI/UX team to improve UI/UX for both Swift and migrated React.js apps. Enhanced existing UIs by improving usability, responsiveness, and accessibility."
     ],
     technologies: [
-      "React.js", "Inertia.js", "Flutter", "Laravel", "Swift", "UIKit", "Appium", "TypeScript", "CI/CD", "Kotlin", "PHP", "Dart", "CMS"
+      "React.js", "Inertia.js", "Flutter", "Laravel", "Swift", "Appium", "TypeScript", "CI/CD", "Kotlin", "Docker", "CI/CD"
     ]
   },
   {
@@ -29,15 +27,14 @@ export const experiences: IJob[] = [
     positionTitle: "Software Engineer",
     dateRange: "Jan 2021 - Jul 2022",
     description: [
-      "Designing and building a mobile application to facilitate user communication within Vendron Cloud ecosystem",
-      "Contributed to the integration with third-party identity verification services by designing and implementing a robust API that seamlessly interacts with Veriff. Worked on integration with these API into existing mobile applications, redesigned and built new user registration flow",
-      "Improved API performance, resulting in faster response times and a smoother overall experience for end-users",
-      "Streamlined API architecture by refactoring existing APIs into RESTful standards, promoting better maintainability, and scalability",
-      "Wrote integration tests for their existing Flutter app to automate UI testing",
-      "Built graphs using fl_chart library for visualizing customers’ sales metrics"
+      "Developed and published VendronOP, a Flutter app seamlessly interacting with Vendron Cloud, their in-house product's cloud service. Contributed UI/UX feedback on initial designs, improving user experience and engagement.",
+      "Conducted thorough research into Veriff's documentation, designed a seamless business flow for user registration and verification, and developed intuitive UIs. Additionally, created a new business flow for identity checking during purchases to enhance fraud prevention measures.",
+      "Analyzed and enhanced API business logic to streamline data processing and reduce resource consumption.",
+      "Restructured API architecture to adhere to RESTful principles, promoting better organization, maintainability, and scalability.",
+      "Increased QA team efficiency by developing automated UI tests. Simplified testing processes and API understanding through comprehensive documentation."
     ],
     technologies: [
-      "Flutter", "Veriff", "PHP"
+      "Flutter", "PHP", "Yii2", "Veriff"
     ]
   },
   {
@@ -46,12 +43,13 @@ export const experiences: IJob[] = [
     positionTitle: "Full-stack Web Developer",
     dateRange: "Apr 2018 - Aug 2018",
     description: [
-      "Built clinic management system with Laravel and React.js which helped clients save 10% of their monthly expenses",
-      "Worked on integration with third-party Pusher notification service",
-      "Built a mobile application with React Native to facilitate internal user’s communication with Appointment module",
+      "Developed a full-stack clinic management system using React.js and Laravel, saved stakeholders 20% of their monthly expenses compared to subscribing to existing clinic management systems. Also leveraged Redux for state management.",
+      "Forked and tailored a scheduler library to meet specific appointment management needs, ensuring adaptability and long-term maintainability.",
+      "Integrated Pusher notifications for real-time updates across web and mobile platforms, fostering efficient communication and user engagement.",
+      "Built React Native mobile app for seamless appointment management, enhanced through Pusher real-time notifications"
     ],
     technologies: [
-      "Laravel", "React.js", "React Native", "TypeScript"
+      "Laravel", "React.js", "React Native", "TypeScript", "Redux", "Pusher"
     ]
   },
   {
